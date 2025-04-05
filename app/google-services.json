@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "97599687990",
-    "project_id": "dziennik-szkolny-vvtfdz",
-    "storage_bucket": "dziennik-szkolny-vvtfdz.firebasestorage.app"
+    "project_number": "842320014654",
+    "project_id": "dzienniczek-3439a",
+    "storage_bucket": "dzienniczek-3439a.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:97599687990:android:c286175e252d218951f797",
-        "android_client_info": {
-          "package_name": "com.mycompany.dziennikszkolny"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD5KVudW1hbD1b7XmVUD8flieuMRSju7f8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:97599687990:android:54dfabac1c90822351f797",
+        "mobilesdk_app_id": "1:842320014654:android:92b5e1007ba8dd272f506f",
         "android_client_info": {
           "package_name": "com.projekt.dzienniczek"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD5KVudW1hbD1b7XmVUD8flieuMRSju7f8"
+          "current_key": "AIzaSyC-rFtw7zjQJv1LWzpHxN_RKnixuyfiv4M"
         }
       ],
       "services": {

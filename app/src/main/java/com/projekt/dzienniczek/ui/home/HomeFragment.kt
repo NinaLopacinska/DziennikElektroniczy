@@ -31,7 +31,9 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if((activity as MainActivity).auth.currentUser == null) {
+        val currentUser = (activity as MainActivity).auth.currentUser
+
+        if(currentUser == null) {
             findNavController().navigate(R.id.action_nav_home_to_nav_login)
         }
 
@@ -41,17 +43,14 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            binding.textHome.text = it
+        currentUser?.let {
+            binding.userType.text = currentUser.displayName
+            binding.userEmail.text = currentUser.email
         }
 
         binding.logout.setOnClickListener{
             (activity as MainActivity).auth.signOut()
             findNavController().navigate(R.id.action_nav_home_to_nav_login)
-        }
-
-        binding.registration.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_registration)
         }
 
         return root

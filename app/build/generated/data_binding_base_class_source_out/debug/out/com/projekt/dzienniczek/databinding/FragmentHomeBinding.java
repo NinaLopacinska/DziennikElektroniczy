@@ -4,7 +4,7 @@ package com.projekt.dzienniczek.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,20 +21,98 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button logout;
+  public final View border1;
 
   @NonNull
-  public final Button registration;
+  public final View border14;
 
   @NonNull
-  public final TextView textHome;
+  public final View border2;
 
-  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull Button logout,
-      @NonNull Button registration, @NonNull TextView textHome) {
+  @NonNull
+  public final View border3;
+
+  @NonNull
+  public final View border4;
+
+  @NonNull
+  public final View border5;
+
+  @NonNull
+  public final View border6;
+
+  @NonNull
+  public final View border7;
+
+  @NonNull
+  public final TextView frekwencja;
+
+  @NonNull
+  public final ImageView imageView;
+
+  @NonNull
+  public final TextView kalendarz;
+
+  @NonNull
+  public final TextView kontakty;
+
+  @NonNull
+  public final TextView listaObecnosci;
+
+  @NonNull
+  public final TextView logout;
+
+  @NonNull
+  public final TextView oceny;
+
+  @NonNull
+  public final TextView planZajec;
+
+  @NonNull
+  public final ConstraintLayout tab;
+
+  @NonNull
+  public final TextView userEmail;
+
+  @NonNull
+  public final TextView userType;
+
+  @NonNull
+  public final TextView ustawienia;
+
+  @NonNull
+  public final TextView wiadomosci;
+
+  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull View border1,
+      @NonNull View border14, @NonNull View border2, @NonNull View border3, @NonNull View border4,
+      @NonNull View border5, @NonNull View border6, @NonNull View border7,
+      @NonNull TextView frekwencja, @NonNull ImageView imageView, @NonNull TextView kalendarz,
+      @NonNull TextView kontakty, @NonNull TextView listaObecnosci, @NonNull TextView logout,
+      @NonNull TextView oceny, @NonNull TextView planZajec, @NonNull ConstraintLayout tab,
+      @NonNull TextView userEmail, @NonNull TextView userType, @NonNull TextView ustawienia,
+      @NonNull TextView wiadomosci) {
     this.rootView = rootView;
+    this.border1 = border1;
+    this.border14 = border14;
+    this.border2 = border2;
+    this.border3 = border3;
+    this.border4 = border4;
+    this.border5 = border5;
+    this.border6 = border6;
+    this.border7 = border7;
+    this.frekwencja = frekwencja;
+    this.imageView = imageView;
+    this.kalendarz = kalendarz;
+    this.kontakty = kontakty;
+    this.listaObecnosci = listaObecnosci;
     this.logout = logout;
-    this.registration = registration;
-    this.textHome = textHome;
+    this.oceny = oceny;
+    this.planZajec = planZajec;
+    this.tab = tab;
+    this.userEmail = userEmail;
+    this.userType = userType;
+    this.ustawienia = ustawienia;
+    this.wiadomosci = wiadomosci;
   }
 
   @Override
@@ -64,25 +142,136 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.border1;
+      View border1 = ViewBindings.findChildViewById(rootView, id);
+      if (border1 == null) {
+        break missingId;
+      }
+
+      id = R.id.border14;
+      View border14 = ViewBindings.findChildViewById(rootView, id);
+      if (border14 == null) {
+        break missingId;
+      }
+
+      id = R.id.border2;
+      View border2 = ViewBindings.findChildViewById(rootView, id);
+      if (border2 == null) {
+        break missingId;
+      }
+
+      id = R.id.border3;
+      View border3 = ViewBindings.findChildViewById(rootView, id);
+      if (border3 == null) {
+        break missingId;
+      }
+
+      id = R.id.border4;
+      View border4 = ViewBindings.findChildViewById(rootView, id);
+      if (border4 == null) {
+        break missingId;
+      }
+
+      id = R.id.border5;
+      View border5 = ViewBindings.findChildViewById(rootView, id);
+      if (border5 == null) {
+        break missingId;
+      }
+
+      id = R.id.border6;
+      View border6 = ViewBindings.findChildViewById(rootView, id);
+      if (border6 == null) {
+        break missingId;
+      }
+
+      id = R.id.border7;
+      View border7 = ViewBindings.findChildViewById(rootView, id);
+      if (border7 == null) {
+        break missingId;
+      }
+
+      id = R.id.frekwencja;
+      TextView frekwencja = ViewBindings.findChildViewById(rootView, id);
+      if (frekwencja == null) {
+        break missingId;
+      }
+
+      id = R.id.imageView;
+      ImageView imageView = ViewBindings.findChildViewById(rootView, id);
+      if (imageView == null) {
+        break missingId;
+      }
+
+      id = R.id.kalendarz;
+      TextView kalendarz = ViewBindings.findChildViewById(rootView, id);
+      if (kalendarz == null) {
+        break missingId;
+      }
+
+      id = R.id.kontakty;
+      TextView kontakty = ViewBindings.findChildViewById(rootView, id);
+      if (kontakty == null) {
+        break missingId;
+      }
+
+      id = R.id.listaObecnosci;
+      TextView listaObecnosci = ViewBindings.findChildViewById(rootView, id);
+      if (listaObecnosci == null) {
+        break missingId;
+      }
+
       id = R.id.logout;
-      Button logout = ViewBindings.findChildViewById(rootView, id);
+      TextView logout = ViewBindings.findChildViewById(rootView, id);
       if (logout == null) {
         break missingId;
       }
 
-      id = R.id.registration;
-      Button registration = ViewBindings.findChildViewById(rootView, id);
-      if (registration == null) {
+      id = R.id.oceny;
+      TextView oceny = ViewBindings.findChildViewById(rootView, id);
+      if (oceny == null) {
         break missingId;
       }
 
-      id = R.id.text_home;
-      TextView textHome = ViewBindings.findChildViewById(rootView, id);
-      if (textHome == null) {
+      id = R.id.planZajec;
+      TextView planZajec = ViewBindings.findChildViewById(rootView, id);
+      if (planZajec == null) {
         break missingId;
       }
 
-      return new FragmentHomeBinding((ConstraintLayout) rootView, logout, registration, textHome);
+      id = R.id.tab;
+      ConstraintLayout tab = ViewBindings.findChildViewById(rootView, id);
+      if (tab == null) {
+        break missingId;
+      }
+
+      id = R.id.userEmail;
+      TextView userEmail = ViewBindings.findChildViewById(rootView, id);
+      if (userEmail == null) {
+        break missingId;
+      }
+
+      id = R.id.userType;
+      TextView userType = ViewBindings.findChildViewById(rootView, id);
+      if (userType == null) {
+        break missingId;
+      }
+
+      id = R.id.ustawienia;
+      TextView ustawienia = ViewBindings.findChildViewById(rootView, id);
+      if (ustawienia == null) {
+        break missingId;
+      }
+
+      id = R.id.wiadomosci;
+      TextView wiadomosci = ViewBindings.findChildViewById(rootView, id);
+      if (wiadomosci == null) {
+        break missingId;
+      }
+
+      return new FragmentHomeBinding((ConstraintLayout) rootView, border1, border14, border2,
+          border3, border4, border5, border6, border7, frekwencja, imageView, kalendarz, kontakty,
+          listaObecnosci, logout, oceny, planZajec, tab, userEmail, userType, ustawienia,
+          wiadomosci);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

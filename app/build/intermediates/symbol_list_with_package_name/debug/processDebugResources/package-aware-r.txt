@@ -1481,6 +1481,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color m3_appbar_overlay_color
@@ -2120,6 +2121,7 @@ color primary_text_disabled_material_light
 color purple_200
 color purple_500
 color purple_700
+color red
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -3019,6 +3021,9 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable account_check
+drawable account_circle
+drawable arrow_left
 drawable avd_hide_password
 drawable avd_show_password
 drawable background_rounded
@@ -3030,6 +3035,12 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable calendar_blank_outline
+drawable card_account_mail
+drawable chevron_down
+drawable chevron_left
+drawable chevron_right
+drawable cog
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -3054,6 +3065,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable exit_to_app
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back_black_24
@@ -3098,6 +3110,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable message_draw
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3148,6 +3161,8 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable numeric
+drawable plus
 drawable side_nav_bar
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -3254,6 +3269,14 @@ id beginOnFirstDraw
 id beginning
 id bestChoice
 id blocking
+id border1
+id border14
+id border2
+id border3
+id border4
+id border5
+id border6
+id border7
 id bottom
 id bounce
 id bounceBoth
@@ -3370,6 +3393,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id frekwencja
 id frost
 id fullscreen_header
 id ghost_view
@@ -3404,6 +3428,8 @@ id italic
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
+id kalendarz
+id kontakty
 id labeled
 id layout
 id left
@@ -3415,6 +3441,7 @@ id line3
 id linear
 id listMode
 id list_item
+id listaObecnosci
 id locale
 id logout
 id ltr
@@ -3503,6 +3530,7 @@ id north
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id oceny
 id off
 id on
 id onInterceptTouchReturnSwipe
@@ -3535,6 +3563,7 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id planZajec
 id position
 id postLayout
 id pressed
@@ -3543,7 +3572,6 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
-id registration
 id report_drawn
 id reverseSawtooth
 id right
@@ -3616,6 +3644,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id tab
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3641,7 +3670,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id text_home
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3673,6 +3701,9 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id userEmail
+id userType
+id ustawienia
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3683,6 +3714,7 @@ id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
 id west
+id wiadomosci
 id wide
 id withText
 id with_icon

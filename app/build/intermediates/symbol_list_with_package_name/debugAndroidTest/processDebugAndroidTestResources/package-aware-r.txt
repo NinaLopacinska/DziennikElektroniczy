@@ -1,3 +1,0 @@
-com.projekt.dzienniczek.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
