@@ -37,15 +37,61 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_home_to_nav_login)
         }
 
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        var userIsStudent = true
+
         currentUser?.let {
             binding.userType.text = currentUser.displayName
             binding.userEmail.text = currentUser.email
+            userIsStudent = currentUser.email == "anowak@wp.pl"
+        }
+
+        if(userIsStudent) {
+            binding.frekwencja.visibility = View.VISIBLE
+            binding.border14.visibility = View.VISIBLE
+            binding.listaObecnosci.visibility = View.GONE
+            binding.border7.visibility = View.GONE
+        } else {
+            binding.frekwencja.visibility = View.GONE
+            binding.border14.visibility = View.GONE
+            binding.listaObecnosci.visibility = View.VISIBLE
+            binding.border7.visibility = View.VISIBLE
+        }
+
+        binding.oceny.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.planZajec.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.kalendarz.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.wiadomosci.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.frekwencja.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.kontakty.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.ustawienia.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+        }
+
+        binding.listaObecnosci.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
         }
 
         binding.logout.setOnClickListener{

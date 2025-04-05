@@ -27,13 +27,13 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val loginViewModel =
+        val viewModel =
             ViewModelProvider(this).get(LoginViewModel::class.java)
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        loginViewModel.text.observe(viewLifecycleOwner) {
+        viewModel.text.observe(viewLifecycleOwner) {
             binding.textLogin.text = it
         }
 
@@ -63,7 +63,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonLoginTeacher.setOnClickListener{
-            binding.editTextLogin.setText("marysiama2003@gmail.com")
+            binding.editTextLogin.setText("anowak@wp.pl")
             binding.editTextPassword.setText("Haslo123")
         }
 

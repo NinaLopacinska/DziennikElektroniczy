@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">842320014654</string>
-    <string name="google_api_key" translatable="false">AIzaSyC-rFtw7zjQJv1LWzpHxN_RKnixuyfiv4M</string>
-    <string name="google_app_id" translatable="false">1:842320014654:android:92b5e1007ba8dd272f506f</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC-rFtw7zjQJv1LWzpHxN_RKnixuyfiv4M</string>
-    <string name="google_storage_bucket" translatable="false">dzienniczek-3439a.firebasestorage.app</string>
-    <string name="project_id" translatable="false">dzienniczek-3439a</string>
-</resources>
