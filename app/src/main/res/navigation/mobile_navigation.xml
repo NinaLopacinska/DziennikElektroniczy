@@ -11,8 +11,11 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_to_nav_oceny"
-            app:destination="@id/nav_oceny" />
+            android:id="@+id/action_nav_home_to_nav_oceny_uczen"
+            app:destination="@id/nav_oceny_uczen" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_oceny_nauczyciel"
+            app:destination="@id/nav_oceny_nauczyciel" />
         <action
             android:id="@+id/action_nav_home_to_nav_frekwencja"
             app:destination="@id/nav_frekwencja" />
@@ -46,8 +49,14 @@
         tools:layout="@layout/fragment_login" />
 
     <fragment
-        android:id="@+id/nav_oceny"
-        android:name="com.projekt.dzienniczek.ui.oceny.OcenyFragment"
+        android:id="@+id/nav_oceny_uczen"
+        android:name="com.projekt.dzienniczek.ui.oceny_uczen.OcenyUczenFragment"
+        android:label="Oceny Uczeń"
+        tools:layout="@layout/fragment_oceny_uczen" />
+
+    <fragment
+        android:id="@+id/nav_oceny_nauczyciel"
+        android:name="com.projekt.dzienniczek.ui.oceny_nauczyciel.OcenyNauczycielFragment"
         android:label="Oceny"
         tools:layout="@layout/fragment_oceny_nauczyciel" />
 

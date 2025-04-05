@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projekt.dzienniczek.databinding.FragmentKontaktyBinding
-import com.projekt.dzienniczek.databinding.FragmentOcenyBinding
 
 class KontaktyFragment : Fragment() {
 
@@ -27,10 +26,6 @@ class KontaktyFragment : Fragment() {
 
         _binding = FragmentKontaktyBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        viewModel.text.observe(viewLifecycleOwner) {
-            binding.textRegistration.text = it
-        }
 
         return root
     }

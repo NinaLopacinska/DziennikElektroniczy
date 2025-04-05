@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projekt.dzienniczek.databinding.FragmentFrekwencjaBinding
-import com.projekt.dzienniczek.databinding.FragmentOcenyBinding
 
 class FrekwencjaFragment : Fragment() {
 

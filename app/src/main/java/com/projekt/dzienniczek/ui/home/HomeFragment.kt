@@ -63,7 +63,11 @@ class HomeFragment : Fragment() {
         }
 
         binding.oceny.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_oceny)
+            if(userIsStudent) {
+                findNavController().navigate(R.id.action_nav_home_to_nav_oceny_uczen)
+            } else {
+                findNavController().navigate(R.id.action_nav_home_to_nav_oceny_nauczyciel)
+            }
         }
 
         binding.planZajec.setOnClickListener{
