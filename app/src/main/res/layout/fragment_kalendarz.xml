@@ -7,12 +7,31 @@
     tools:context=".ui.oceny.OcenyFragment">
 
     <TextView
+        android:id="@+id/textView7"
+        android:layout_width="96dp"
+        android:layout_height="27dp"
+        android:text="Przedmiot"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="202dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="60dp"
+        android:layout_height="28dp"
+        android:text="Data"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="338dp" />
+
+    <TextView
         android:id="@+id/text_registration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="SPRAWDZIANY"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,72 +41,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.133" />
 
-    <TextView
-        android:id="@+id/textLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_registration" />
-
     <EditText
-        android:id="@+id/editTextLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/editTextText4"
+        android:layout_width="255dp"
+        android:layout_height="35dp"
         android:ems="10"
         android:inputType="text"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/textLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textLogin" />
-
-
-    <TextView
-        android:id="@+id/textPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hasło"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@id/textLogin"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLogin" />
+        android:text="Opis"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="273dp" />
 
     <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/editTextDate"
+        android:layout_width="253dp"
+        android:layout_height="36dp"
         android:ems="10"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/textLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textPassword"  />
+        android:inputType="date"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="338dp" />
 
-    <TextView
-        android:id="@+id/textRepeatPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Powtórz hasło"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@id/textLogin"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-
-    <EditText
-        android:id="@+id/editTextRepeatPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/textLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textRepeatPassword"  />
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="252dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="202dp" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zaloguj"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRepeatPassword"  />
+        android:text="Zatwierdz"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="60dp"
+        android:layout_height="28dp"
+        android:text="Opis"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="273dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
