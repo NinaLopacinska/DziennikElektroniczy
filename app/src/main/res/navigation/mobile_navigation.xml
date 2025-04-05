@@ -11,8 +11,29 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_to_nav_registration"
-            app:destination="@id/nav_registration" />
+            android:id="@+id/action_nav_home_to_nav_oceny"
+            app:destination="@id/nav_oceny" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_frekwencja"
+            app:destination="@id/nav_frekwencja" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_kalendarz"
+            app:destination="@id/nav_kalendarz" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_kontakty"
+            app:destination="@id/nav_kontakty" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_lista_obecnosci"
+            app:destination="@id/nav_lista_obecnosci" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_plan_zajec"
+            app:destination="@id/nav_plan_zajec" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_ustawienia"
+            app:destination="@id/nav_ustawienia" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_wiadomosci"
+            app:destination="@id/nav_wiadomosci" />
         <action
             android:id="@+id/action_nav_home_to_nav_login"
             app:destination="@id/nav_login" />
@@ -25,10 +46,52 @@
         tools:layout="@layout/fragment_login" />
 
     <fragment
-        android:id="@+id/nav_registration"
+        android:id="@+id/nav_oceny"
         android:name="com.projekt.dzienniczek.ui.oceny.OcenyFragment"
-        android:label="@string/menu_registration"
+        android:label="Oceny"
         tools:layout="@layout/fragment_oceny" />
+
+    <fragment
+        android:id="@+id/nav_frekwencja"
+        android:name="com.projekt.dzienniczek.ui.frekwencja.FrekwencjaFragment"
+        android:label="Frekwencja"
+        tools:layout="@layout/fragment_frekwencja" />
+
+    <fragment
+        android:id="@+id/nav_kalendarz"
+        android:name="com.projekt.dzienniczek.ui.kalendarz.KalendarzFragment"
+        android:label="Kalendarz"
+        tools:layout="@layout/fragment_kalendarz" />
+
+    <fragment
+        android:id="@+id/nav_kontakty"
+        android:name="com.projekt.dzienniczek.ui.kontakty.KontaktyFragment"
+        android:label="Kontakty"
+        tools:layout="@layout/fragment_kontakty" />
+
+    <fragment
+        android:id="@+id/nav_lista_obecnosci"
+        android:name="com.projekt.dzienniczek.ui.listaObecnosci.ListaObecnosciFragment"
+        android:label="Lista Obecności"
+        tools:layout="@layout/fragment_lista_obecnsci" />
+
+    <fragment
+        android:id="@+id/nav_plan_zajec"
+        android:name="com.projekt.dzienniczek.ui.planZajec.PlanZajecFragment"
+        android:label="Plan Zajęc"
+        tools:layout="@layout/fragment_plan_zajec" />
+
+    <fragment
+        android:id="@+id/nav_ustawienia"
+        android:name="com.projekt.dzienniczek.ui.ustawienia.UstawieniaFragment"
+        android:label="Ustawienia"
+        tools:layout="@layout/fragment_ustawienia" />
+
+    <fragment
+        android:id="@+id/nav_wiadomosci"
+        android:name="com.projekt.dzienniczek.ui.wiadomosci.WiadomosciFragment"
+        android:label="Wiadomości"
+        tools:layout="@layout/fragment_wiadomosci" />
 
     <action android:id="@+id/action_global_nav_login" app:destination="@id/nav_login"/>
 

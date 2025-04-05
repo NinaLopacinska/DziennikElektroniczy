@@ -38,22 +38,33 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonLogin.setOnClickListener{
-            activity?.let { act ->
-                (act as MainActivity).auth.signInWithEmailAndPassword(binding.editTextLogin.text.toString(), binding.editTextPassword.text.toString())
-                    .addOnCompleteListener(act) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            findNavController().popBackStack()
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("signInWithEmail:failure", task.exception)
-                            Toast.makeText(
-                                context,
-                                "Authentication failed.",
-                                Toast.LENGTH_SHORT,
-                            ).show()
+            val login = binding.editTextLogin.text.toString()
+            val password =  binding.editTextPassword.text.toString()
+
+            if(login.isNotEmpty() && password.isNotEmpty()) {
+                activity?.let { act ->
+                    (act as MainActivity).auth.signInWithEmailAndPassword(login, password)
+                        .addOnCompleteListener(act) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                findNavController().popBackStack()
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("signInWithEmail:failure", task.exception)
+                                Toast.makeText(
+                                    context,
+                                    "Authentication failed.",
+                                    Toast.LENGTH_SHORT,
+                                ).show()
+                            }
                         }
-                    }
+                }
+            } else {
+                Toast.makeText(
+                    context,
+                    "Pola nie mogą być puste",
+                    Toast.LENGTH_SHORT,
+                ).show()
             }
         }
 
