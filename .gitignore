@@ -1,0 +1,12 @@
+/.idea/
+/.gradle/
+/app/build/
+/app/build/intermediates/
+/app/build/gmpAppId.txt
+/app/build/outputs/
+/app/build/generated/
+/app/build/generated/ap_generated_sources/
+/app/build/tmp/
+/app/build/kotlin/
+/app/build/generated/res/
+/app/build/generated/data_binding_base_class_source_out/
