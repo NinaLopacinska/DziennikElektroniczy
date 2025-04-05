@@ -1,10 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.oceny_nauczyciel.OcenyNauczycielFragment">
+    android:layout_height="match_parent">
 
+    <!-- Nagłówek -->
+    <TextView
+        android:id="@+id/text_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oceny"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Label: Przedmiot -->
+    <TextView
+        android:id="@+id/label_przedmiot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Przedmiot"
+        app:layout_constraintTop_toBottomOf="@id/text_header"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Spinner: Przedmiot -->
+    <Spinner
+        android:id="@+id/spinner_przedmiot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/label_przedmiot"
+        app:layout_constraintStart_toEndOf="@id/label_przedmiot"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Label: Uczeń -->
+    <TextView
+        android:id="@+id/label_uczen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uczeń"
+        app:layout_constraintTop_toBottomOf="@id/spinner_przedmiot"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Spinner: Uczeń -->
+    <Spinner
+        android:id="@+id/spinner_uczen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/label_uczen"
+        app:layout_constraintStart_toEndOf="@id/label_uczen"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Label: Ocena -->
+    <TextView
+        android:id="@+id/label_ocena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ocena"
+        app:layout_constraintTop_toBottomOf="@id/spinner_uczen"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- EditText: Ocena -->
+    <EditText
+        android:id="@+id/editText_ocena"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:hint="Wpisz ocenę"
+        app:layout_constraintTop_toTopOf="@id/label_ocena"
+        app:layout_constraintStart_toEndOf="@id/label_ocena"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Label: Opis -->
+    <TextView
+        android:id="@+id/label_opis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opis"
+        app:layout_constraintTop_toBottomOf="@id/editText_ocena"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- EditText: Opis -->
+    <EditText
+        android:id="@+id/editText_opis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Dodaj opis"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="@id/label_opis"
+        app:layout_constraintStart_toEndOf="@id/label_opis"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Label: Dodaj zdjęcie -->
+    <TextView
+        android:id="@+id/label_zdjecie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj zdjęcie"
+        app:layout_constraintTop_toBottomOf="@id/editText_opis"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Button: Dodaj zdjęcie -->
+    <Button
+        android:id="@+id/button_dodaj_zdjecie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Wybierz zdjęcie"
+        app:layout_constraintTop_toTopOf="@id/label_zdjecie"
+        app:layout_constraintStart_toEndOf="@id/label_zdjecie"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Button: Zatwierdź -->
+    <Button
+        android:id="@+id/button_zatwierdz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zatwierdź"
+        app:layout_constraintTop_toBottomOf="@id/button_dodaj_zdjecie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
