@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "97599687990",
+    "project_id": "dziennik-szkolny-vvtfdz",
+    "storage_bucket": "dziennik-szkolny-vvtfdz.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97599687990:android:c286175e252d218951f797",
+        "android_client_info": {
+          "package_name": "com.mycompany.dziennikszkolny"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5KVudW1hbD1b7XmVUD8flieuMRSju7f8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97599687990:android:54dfabac1c90822351f797",
+        "android_client_info": {
+          "package_name": "com.projekt.dzienniczek"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5KVudW1hbD1b7XmVUD8flieuMRSju7f8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

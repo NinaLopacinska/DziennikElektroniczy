@@ -1,0 +1,6 @@
+com.projekt.dzienniczek.test.app-core-1.5.0-0 C:\Users\Czarek\.gradle\caches\8.10.2\transforms\4363098b16ef8d275ac4c1cc0015d83d\transformed\core-1.5.0\res
+com.projekt.dzienniczek.test.app-annotation-experimental-1.3.0-1 C:\Users\Czarek\.gradle\caches\8.10.2\transforms\7e288bd97068ff9ce61fec974dde7d91\transformed\annotation-experimental-1.3.0\res
+com.projekt.dzienniczek.test.app-androidTest-2 C:\Users\Czarek\AndroidStudioProjects\Dzienniczek\app\build\generated\res\resValues\androidTest\debug
+com.projekt.dzienniczek.test.app-mergeDebugAndroidTestResources-3 C:\Users\Czarek\AndroidStudioProjects\Dzienniczek\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.projekt.dzienniczek.test.app-mergeDebugAndroidTestResources-4 C:\Users\Czarek\AndroidStudioProjects\Dzienniczek\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.projekt.dzienniczek.test.app-debugAndroidTest-5 C:\Users\Czarek\AndroidStudioProjects\Dzienniczek\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
