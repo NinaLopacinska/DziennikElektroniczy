@@ -9,13 +9,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.navigateUp
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.databinding.FragmentHomeBinding
+import com.projekt.dzienniczek.model.Role
+import com.projekt.dzienniczek.model.User
 
 class HomeFragment : Fragment() {
 
@@ -40,30 +46,46 @@ class HomeFragment : Fragment() {
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        var userIsStudent = true
-
-        currentUser?.let {
-            binding.userType.text = currentUser.displayName
-            binding.userEmail.text = currentUser.email
-            userIsStudent = currentUser.email == "anowak@wp.pl"
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
+            (activity as MainActivity).auth.signOut()
+            findNavController().navigate(R.id.action_nav_home_to_nav_login)
+            Toast.makeText(
+                context,
+                it,
+                Toast.LENGTH_SHORT,
+            ).show()
         }
 
-        if(userIsStudent) {
-            binding.frekwencja.visibility = View.GONE
-            binding.border14.visibility = View.GONE
-            binding.listaObecnosci.visibility = View.VISIBLE
-            binding.border7.visibility = View.VISIBLE
-        } else {
-            binding.frekwencja.visibility = View.VISIBLE
-            binding.border14.visibility = View.VISIBLE
-            binding.listaObecnosci.visibility = View.GONE
-            binding.border7.visibility = View.GONE
+        var rola: Role = Role.UCZEN
+
+        viewModel.userData.observe(viewLifecycleOwner) {
+            it.rola?.let { roleId ->
+                Role.findRole(roleId)?.let { roleValue ->
+                    rola = roleValue
+                }
+            }
+
+            binding.userType.text = rola.name
+            binding.userEmail.text = it.email
+
+            if(rola == Role.UCZEN) {
+                binding.frekwencja.visibility = View.GONE
+                binding.border14.visibility = View.GONE
+                binding.listaObecnosci.visibility = View.VISIBLE
+                binding.border7.visibility = View.VISIBLE
+            } else {
+                binding.frekwencja.visibility = View.VISIBLE
+                binding.border14.visibility = View.VISIBLE
+                binding.listaObecnosci.visibility = View.GONE
+                binding.border7.visibility = View.GONE
+            }
+
+            binding.progressLoader.visibility = View.GONE
         }
 
         binding.oceny.setOnClickListener{
-            if(userIsStudent) {
+            if(rola == Role.UCZEN) {
                 findNavController().navigate(R.id.action_nav_home_to_nav_oceny_uczen)
             } else {
                 findNavController().navigate(R.id.action_nav_home_to_nav_oceny_nauczyciel)
@@ -103,7 +125,12 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_home_to_nav_login)
         }
 
-        return root
+        currentUser?.uid?.let {
+            viewModel.getUserData(it)
+            binding.progressLoader.visibility = View.VISIBLE
+        }
+
+        return binding.root
     }
 
     override fun onDestroyView() {

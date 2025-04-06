@@ -284,4 +284,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progress_loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="150dp"
+        android:layout_centerInParent="true"
+        android:background="@color/background"
+        android:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
