@@ -4,114 +4,230 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.ustawienia.UstawieniaFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="333dp"
-        android:layout_height="50dp"
-        android:text="Zmień hasło"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="646dp" />
+        <TextView
+            android:id="@+id/ustawienia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="Ustawienia"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/button_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ustawienia"
+            app:tint="@color/white" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_rounded"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/tab">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="338dp"
-        android:layout_height="37dp"
-        android:text="Hasło musi zawierać co najmniej 5 znaków, jedną wielką literę i jedną cyfrę."
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="605dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/powiadomienia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="542dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="434dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="357dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="141dp"
-        android:layout_height="20dp"
-        android:text="Atualne hasło"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="326dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nowe hasło"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="403dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Potwierdź nowe hasło"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="498dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="111dp"
-        android:layout_height="29dp"
-        android:text="Zmiana hasła"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="280dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
         android:text="Powiadomienia"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="139dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="314dp"
-        android:layout_height="34dp"
-        android:text="Powiadomienie o nowych ocenach"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="175dp" />
+    <View
+        android:id="@+id/border1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@id/powiadomienia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="318dp"
-        android:layout_height="27dp"
-        android:text="Powiadomienia o nowych wiadomościach"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="225dp" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_powiadomienia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Włącz powiadomienia"
+            app:layout_constraintTop_toBottomOf="@id/border1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ustawienia"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="82dp" />
+        android:background="@drawable/background_rounded"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/tab2">
+
+        <TextView
+            android:id="@+id/zmiana_hasla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            android:text="Zmiana hasła"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/aktualne_hasło"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Atualne hasło"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/zmiana_hasla" />
+
+        <EditText
+            android:id="@+id/current_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="12dp"
+            android:background="@drawable/background_rounded_grey"
+            android:hint="E-mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aktualne_hasło" />
+
+        <TextView
+            android:id="@+id/nowe_hasło"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Nowe hasło"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/current_password" />
+
+
+        <EditText
+            android:id="@+id/new_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="12dp"
+            android:background="@drawable/background_rounded_grey"
+            android:hint="E-mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nowe_hasło" />
+
+        <TextView
+            android:id="@+id/powtorz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Potwierdź nowe hasło"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/new_password" />
+
+        <EditText
+            android:id="@+id/repeat_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="12dp"
+            android:background="@drawable/background_rounded_grey"
+            android:hint="E-mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/powtorz" />
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Hasło musi zawierać co najmniej 5 znaków, jedną wielką literę i jedną cyfrę."
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repeat_password" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zmień hasło"
+            android:background="@drawable/background_rounded_purple"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repeat_password" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

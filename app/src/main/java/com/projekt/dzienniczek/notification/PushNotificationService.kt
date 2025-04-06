@@ -16,6 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.R
+import com.projekt.dzienniczek.utils.AppPreferences
 import java.io.IOException
 import java.net.URL
 
@@ -23,10 +24,10 @@ class PushNotificationService : FirebaseMessagingService() {
     var TAG = "MyFirebaseMesaggingService"
 
     override fun onMessageReceived(message: RemoteMessage) {
-        if (message.data.size > 0) {
+        if (message.data.isNotEmpty()) {
             Log.d(TAG, "Message Data payload: " + message.data)
         }
-        if (message.notification != null) {
+        if (message.notification != null && AppPreferences.isNotificationOn) {
             sendNotification(
                 message.notification!!.body, message.notification!!.title, message.notification!!
                     .imageUrl

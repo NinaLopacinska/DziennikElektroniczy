@@ -16,11 +16,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 import com.projekt.dzienniczek.databinding.ActivityMainBinding
+import com.projekt.dzienniczek.utils.AppPreferences
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AppPreferences.init(this)
 
         auth = Firebase.auth
 
@@ -63,7 +68,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
-
 
     private fun askNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
