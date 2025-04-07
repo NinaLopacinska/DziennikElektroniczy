@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_login, R.id.nav_oceny_nauczyciel, R.id.nav_oceny_uczen,  R.id.nav_frekwencja, R.id.nav_kalendarz, R.id.nav_kontakty, R.id.nav_lista_obecnosci, R.id.nav_plan_zajec, R.id.nav_ustawienia, R.id.nav_wiadomosci
+                R.id.nav_home, R.id.nav_login, R.id.nav_oceny_nauczyciel, R.id.nav_oceny_uczen,  R.id.nav_frekwencja, R.id.nav_kalendarz, R.id.nav_kontakty, R.id.nav_lista_obecnosci, R.id.nav_plan_zajec, R.id.nav_ustawienia, R.id.nav_wiadomosci, R.id.nav_wiadomosci_item
             ), drawerLayout
         )
 

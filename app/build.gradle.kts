@@ -59,4 +59,5 @@ dependencies {
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.3")
     implementation("com.google.firebase:firebase-firestore:25.1.3")
+    implementation(libs.gson)
 }

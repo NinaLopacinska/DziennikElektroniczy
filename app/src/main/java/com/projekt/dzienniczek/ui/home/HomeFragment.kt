@@ -2,26 +2,17 @@ package com.projekt.dzienniczek.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.navigateUp
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.databinding.FragmentHomeBinding
 import com.projekt.dzienniczek.model.Role
-import com.projekt.dzienniczek.model.User
 
 class HomeFragment : Fragment() {
 
