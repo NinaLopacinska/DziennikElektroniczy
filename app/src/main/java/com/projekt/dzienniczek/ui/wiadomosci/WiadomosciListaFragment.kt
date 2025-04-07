@@ -34,6 +34,8 @@ class WiadomosciListaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val currentUser = (activity as MainActivity).auth.currentUser
+
         val viewModel =
             ViewModelProvider(this).get(WiadomosciListaViewModel::class.java)
 
@@ -50,8 +52,10 @@ class WiadomosciListaFragment : Fragment() {
             ).show()
         }
 
-        viewModel.userDataAndSchoolClassLiveData.observe(viewLifecycleOwner) { (userData, schoolClass) ->
-            if(userData != null && schoolClass != null) {
+        viewModel.userDataAndSchoolClassLiveData.observe(viewLifecycleOwner) { (userList, schoolClass) ->
+            if(userList != null && schoolClass != null) {
+                val userData = userList.filter { it.email != currentUser?.email }
+
                 val allUsersEmail: List<String?> = userData.map { it.email }
                 val students: List<User> = userData.filter { it.rola == Role.UCZEN.value }
                 val studentsEmail: List<String?> = students.map { it.email }
@@ -110,8 +114,7 @@ class WiadomosciListaFragment : Fragment() {
                         ListaKontaktow(
                             name = sclass.nazwa.orEmpty(),
                             viewType = KontaktViewType.VIEW_TYPE_ITEM,
-                            emailList = students.filter { it.id_klasa == sclass.id_klasa }
-                                .map { it.email }
+                            emailList = userData.filter { it.id_klasa == sclass.id_klasa }.map { it.email }
                         )
                     )
                 }
