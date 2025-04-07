@@ -16,9 +16,6 @@ import com.projekt.dzienniczek.utils.AppPreferences
 class UstawieniaFragment : Fragment() {
 
     private var _binding: FragmentUstawieniaBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,27 +23,32 @@ class UstawieniaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
-            ViewModelProvider(this).get(UstawieniaViewModel::class.java)
-
+        val viewModel = ViewModelProvider(this).get(UstawieniaViewModel::class.java)
         _binding = FragmentUstawieniaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // Stan przełącznika powiadomień
         binding.switchPowiadomienia.isChecked = AppPreferences.isNotificationOn
 
         binding.switchPowiadomienia.setOnCheckedChangeListener { _, isChecked ->
             AppPreferences.isNotificationOn = isChecked
-            Toast.makeText(context, "Uruchom aplikację ponownie aby zapisać dane", Toast.LENGTH_SHORT,).show()
+            Toast.makeText(context, "Uruchom aplikację ponownie, aby zapisać dane", Toast.LENGTH_SHORT).show()
         }
 
+        // Obsługa zmiany hasła
         binding.button.setOnClickListener {
-            if (binding.newPassword.text.equals(binding.repeatPassword.text)) {
-                changePassword(
-                    binding.currentPassword.text.toString(),
-                    binding.newPassword.text.toString()
-                )
+            val currentPassword = binding.currentPassword.text.toString()
+            val newPassword = binding.newPassword.text.toString()
+            val repeatPassword = binding.repeatPassword.text.toString()
+
+            if (newPassword == repeatPassword) {
+                if (newPassword.length >= 6) {
+                    changePassword(currentPassword, newPassword)
+                } else {
+                    Toast.makeText(context, "Hasło musi mieć co najmniej 6 znaków", Toast.LENGTH_SHORT).show()
+                }
             } else {
-                Toast.makeText(context, "Password are not the same", Toast.LENGTH_SHORT,).show()
+                Toast.makeText(context, "Hasła nie są takie same", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -58,23 +60,24 @@ class UstawieniaFragment : Fragment() {
     }
 
     private fun changePassword(oldPassword: String, newPassword: String) {
-        (activity as MainActivity).auth.currentUser?.let { user ->
-            val credential = EmailAuthProvider.getCredential(user.email!!, oldPassword)
+        val user = (activity as MainActivity).auth.currentUser
 
-            user.reauthenticate(credential)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        user.updatePassword(newPassword).addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Toast.makeText(context, "Password updated", Toast.LENGTH_SHORT,).show()
-                            } else {
-                                Toast.makeText(context, "Error password not updated", Toast.LENGTH_SHORT,).show()
-                            }
+        user?.email?.let { email ->
+            val credential = EmailAuthProvider.getCredential(email, oldPassword)
+
+            user.reauthenticate(credential).addOnCompleteListener { reauthTask ->
+                if (reauthTask.isSuccessful) {
+                    user.updatePassword(newPassword).addOnCompleteListener { updateTask ->
+                        if (updateTask.isSuccessful) {
+                            Toast.makeText(context, "Hasło zostało zmienione", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, "Błąd: nie udało się zmienić hasła", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        Toast.makeText(context, "Error auth failed", Toast.LENGTH_SHORT,).show()
                     }
+                } else {
+                    Toast.makeText(context, "Błąd: niepoprawne obecne hasło", Toast.LENGTH_SHORT).show()
                 }
+            }
         }
     }
 
