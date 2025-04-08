@@ -8,7 +8,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -17,9 +16,9 @@ import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.databinding.FragmentOcenyNauczycielBinding
 import com.projekt.dzienniczek.model.Role
-import com.projekt.dzienniczek.model.SchoolClass
 import com.projekt.dzienniczek.model.Subject
 import com.projekt.dzienniczek.model.User
+import java.text.DecimalFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.TimeZone
@@ -70,6 +69,9 @@ class OcenyNauczycielFragment : Fragment() {
                 val adapter3 = StudentAdapter(activity as MainActivity, user.filter { it.rola == Role.UCZEN.value }.toTypedArray())
                 binding.spinnerStudent.adapter = adapter3
 
+                val adapter4 = OcenaAdapter(activity as MainActivity, listOf("6", "5.5", "5","4.5", "4", "3.5", "3", "2.5", "2", "1.5", "1").toTypedArray())
+                binding.gradeValue.adapter = adapter4
+
                 var selectedDate: Date? = null
 
                 val cal: Calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"))
@@ -90,7 +92,6 @@ class OcenyNauczycielFragment : Fragment() {
                 binding.buttonSend.setOnClickListener {
                     if(
                         selectedDate != null
-                        && binding.gradeValue.text.isNotEmpty()
                         && (binding.spinnerStudent.selectedItem as User).id != null
                         && (binding.spinnerPrzedmiot.selectedItem as Subject).id != null
                         ) {
@@ -98,7 +99,7 @@ class OcenyNauczycielFragment : Fragment() {
                             przedmiot = (binding.spinnerPrzedmiot.selectedItem as Subject).id!!,
                             uczen = (binding.spinnerStudent.selectedItem as User).id!!,
                             date = selectedDate!!,
-                            ocena = binding.gradeValue.text.toString().toDouble(),
+                            ocena = (binding.gradeValue.selectedItem as String).toDouble(),
                             nauczyciel = currentUser!!.uid
                         )
                     } else {
@@ -134,4 +135,5 @@ class OcenyNauczycielFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
