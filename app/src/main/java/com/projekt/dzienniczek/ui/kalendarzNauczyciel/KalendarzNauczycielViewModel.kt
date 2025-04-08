@@ -1,10 +1,10 @@
-package com.projekt.dzienniczek.ui.kalendarz
+package com.projekt.dzienniczek.ui.kalendarzNauczyciel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class KalendarzViewModel : ViewModel() {
+class KalendarzNauczycielViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is Kalendarz Fragment"

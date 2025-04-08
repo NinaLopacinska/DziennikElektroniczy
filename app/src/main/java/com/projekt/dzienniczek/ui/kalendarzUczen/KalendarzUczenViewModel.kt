@@ -1,13 +1,13 @@
-package com.projekt.dzienniczek.ui.oceny_nauczyciel
+package com.projekt.dzienniczek.ui.kalendarzUczen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class OcenyNauczycielViewModel : ViewModel() {
+class KalendarzUczenViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Oceny Fragment"
+        value = "This is Kalendarz Fragment"
     }
     val text: LiveData<String> = _text
 }

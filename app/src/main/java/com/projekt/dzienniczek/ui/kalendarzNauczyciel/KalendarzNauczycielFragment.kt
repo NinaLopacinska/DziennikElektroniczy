@@ -1,4 +1,4 @@
-package com.projekt.dzienniczek.ui.oceny_nauczyciel
+package com.projekt.dzienniczek.ui.kalendarzNauczyciel
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.projekt.dzienniczek.databinding.FragmentOcenyNauczycielBinding
+import com.projekt.dzienniczek.databinding.FragmentKalendarzNauczycielBinding
 
-class OcenyNauczycielFragment : Fragment() {
+class KalendarzNauczycielFragment : Fragment() {
 
-    private var _binding: FragmentOcenyNauczycielBinding? = null
+    private var _binding: FragmentKalendarzNauczycielBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,11 +22,14 @@ class OcenyNauczycielFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val viewModel =
-            ViewModelProvider(this).get(OcenyNauczycielViewModel::class.java)
+            ViewModelProvider(this).get(KalendarzNauczycielViewModel::class.java)
 
-        _binding = FragmentOcenyNauczycielBinding.inflate(inflater, container, false)
+        _binding = FragmentKalendarzNauczycielBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        viewModel.text.observe(viewLifecycleOwner) {
+            binding.textRegistration.text = it
+        }
 
         return root
     }

@@ -6,8 +6,8 @@ import java.util.Date
 @IgnoreExtraProperties
 data class Grade(
     val data: Date? = null,
-    val id_przedmiotu: Int? = null,
-    val id_uzyt: Int? = null,
+    val id_przedmiotu: String? = null,
+    val id_uzyt: String? = null,
     val image: String? = null,
-    val ocena: Int? = null
+    val ocena: Double = 0.0
 )

@@ -1,7 +1,5 @@
 package com.projekt.dzienniczek.ui.wiadomosci
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,7 +14,7 @@ import com.google.gson.Gson
 import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.databinding.FragmentWiadomosciListaBinding
-import com.projekt.dzienniczek.model.KontaktViewType
+import com.projekt.dzienniczek.model.AdapterViewType
 import com.projekt.dzienniczek.model.ListaKontaktow
 import com.projekt.dzienniczek.model.Role
 import com.projekt.dzienniczek.model.User
@@ -66,14 +64,14 @@ class WiadomosciListaFragment : Fragment() {
                 contactList.add(
                     ListaKontaktow(
                         name = "Wszyscy",
-                        viewType = KontaktViewType.VIEW_TYPE_HEADER,
+                        viewType = AdapterViewType.VIEW_TYPE_HEADER,
                         emailList = allUsersEmail
                     )
                 )
                 contactList.add(
                     ListaKontaktow(
                         name = "Nauczyciele",
-                        viewType = KontaktViewType.VIEW_TYPE_HEADER,
+                        viewType = AdapterViewType.VIEW_TYPE_HEADER,
                         emailList = teachersEmail
                     )
                 )
@@ -81,7 +79,7 @@ class WiadomosciListaFragment : Fragment() {
                     teachers.map {
                         ListaKontaktow(
                             name = it.imie + " " + it.nazwisko,
-                            viewType = KontaktViewType.VIEW_TYPE_ITEM,
+                            viewType = AdapterViewType.VIEW_TYPE_ITEM,
                             emailList = listOf(it.email)
                         )
                     }
@@ -89,7 +87,7 @@ class WiadomosciListaFragment : Fragment() {
                 contactList.add(
                     ListaKontaktow(
                         name = "Uczniowie",
-                        viewType = KontaktViewType.VIEW_TYPE_HEADER,
+                        viewType = AdapterViewType.VIEW_TYPE_HEADER,
                         emailList = studentsEmail
                     )
                 )
@@ -97,7 +95,7 @@ class WiadomosciListaFragment : Fragment() {
                     students.map {
                         ListaKontaktow(
                             name = it.imie + " " + it.nazwisko,
-                            viewType = KontaktViewType.VIEW_TYPE_ITEM,
+                            viewType = AdapterViewType.VIEW_TYPE_ITEM,
                             emailList = listOf(it.email)
                         )
                     }
@@ -105,7 +103,7 @@ class WiadomosciListaFragment : Fragment() {
                 contactList.add(
                     ListaKontaktow(
                         name = "Klasy",
-                        viewType = KontaktViewType.VIEW_TYPE_HEADER,
+                        viewType = AdapterViewType.VIEW_TYPE_HEADER,
                         emailList = studentsEmail
                     )
                 )
@@ -113,7 +111,7 @@ class WiadomosciListaFragment : Fragment() {
                     contactList.add(
                         ListaKontaktow(
                             name = sclass.nazwa.orEmpty(),
-                            viewType = KontaktViewType.VIEW_TYPE_ITEM,
+                            viewType = AdapterViewType.VIEW_TYPE_ITEM,
                             emailList = userData.filter { it.id_klasa == sclass.id_klasa }.map { it.email }
                         )
                     )

@@ -20,8 +20,11 @@
             android:id="@+id/action_nav_home_to_nav_frekwencja"
             app:destination="@id/nav_frekwencja" />
         <action
-            android:id="@+id/action_nav_home_to_nav_kalendarz"
-            app:destination="@id/nav_kalendarz" />
+            android:id="@+id/action_nav_home_to_nav_kalendarz_uczen"
+            app:destination="@id/nav_kalendarz_uczen" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_kalendarz_nauczyciel"
+            app:destination="@id/nav_kalendarz_nauczyciel" />
         <action
             android:id="@+id/action_nav_home_to_nav_kontakty"
             app:destination="@id/nav_kontakty" />
@@ -50,13 +53,13 @@
 
     <fragment
         android:id="@+id/nav_oceny_uczen"
-        android:name="com.projekt.dzienniczek.ui.oceny_uczen.OcenyUczenFragment"
+        android:name="com.projekt.dzienniczek.ui.ocenyUczen.OcenyUczenFragment"
         android:label="Oceny Uczeń"
         tools:layout="@layout/fragment_oceny_uczen" />
 
     <fragment
         android:id="@+id/nav_oceny_nauczyciel"
-        android:name="com.projekt.dzienniczek.ui.oceny_nauczyciel.OcenyNauczycielFragment"
+        android:name="com.projekt.dzienniczek.ui.ocenyNauczyciel.OcenyNauczycielFragment"
         android:label="Oceny"
         tools:layout="@layout/fragment_oceny_nauczyciel" />
 
@@ -67,10 +70,17 @@
         tools:layout="@layout/fragment_frekwencja" />
 
     <fragment
-        android:id="@+id/nav_kalendarz"
-        android:name="com.projekt.dzienniczek.ui.kalendarz.KalendarzFragment"
-        android:label="Kalendarz"
-        tools:layout="@layout/fragment_kalendarz" />
+        android:id="@+id/nav_kalendarz_uczen"
+        android:name="com.projekt.dzienniczek.ui.kalendarzUczen.KalendarzUczenFragment"
+        android:label="Kalendarz Uczeń"
+        tools:layout="@layout/fragment_kalendarz_uczen" />
+
+    <fragment
+        android:id="@+id/nav_kalendarz_nauczyciel"
+        android:name="com.projekt.dzienniczek.ui.kalendarzNauczyciel.KalendarzNauczycielFragment"
+        android:label="Kalendarz Nauczyciel"
+        tools:layout="@layout/fragment_kalendarz_nauczyciel" />
+
 
     <fragment
         android:id="@+id/nav_kontakty"

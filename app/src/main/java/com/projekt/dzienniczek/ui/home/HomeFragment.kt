@@ -88,7 +88,11 @@ class HomeFragment : Fragment() {
         }
 
         binding.kalendarz.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_kalendarz)
+            if(rola == Role.UCZEN) {
+                findNavController().navigate(R.id.action_nav_home_to_nav_kalendarz_uczen)
+            } else {
+                findNavController().navigate(R.id.action_nav_home_to_nav_kalendarz_nauczyciel)
+            }
         }
 
         binding.wiadomosci.setOnClickListener{

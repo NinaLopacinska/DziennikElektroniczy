@@ -4,7 +4,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class Subject(
-    val id_przedmiotu: Int? = null,
-    val id_uzyt: Int? = null,
+    val id: String? = null,
+    val id_uzyt: String? = null,
     val nazwa: String? = null
 )
