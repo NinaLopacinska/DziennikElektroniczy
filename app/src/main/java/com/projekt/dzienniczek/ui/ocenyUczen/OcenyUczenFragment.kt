@@ -62,10 +62,10 @@ class OcenyUczenFragment : Fragment() {
                 val contactList = emptyList<ListaOcen>().toMutableList()
 
                 subject.forEach { s ->
-                    val oceny = userGrade.filter { it.id_przedmiotu == s.id }.map {
+                    val oceny = userGrade.filter { it.id_przedmiotu.toString() == s.id }.map {
                         ListaOcen(
                             name = format.format(it.data!!),
-                            viewType = AdapterViewType.VIEW_TYPE_HEADER,
+                            viewType = AdapterViewType.VIEW_TYPE_ITEM,
                             grade = it.ocena
                         )
                     }
@@ -74,11 +74,17 @@ class OcenyUczenFragment : Fragment() {
 
                     oceny.forEach { suma += it.grade }
 
+                    var srednia = 0.0
+
+                    if(oceny.isNotEmpty()){
+                        srednia = suma/oceny.size
+                    }
+
                     contactList.add(
                         ListaOcen(
                             name = s.nazwa.orEmpty(),
                             viewType = AdapterViewType.VIEW_TYPE_HEADER,
-                            grade = (suma/oceny.size)
+                            grade = (srednia)
                         )
                     )
                     contactList.addAll(oceny)
