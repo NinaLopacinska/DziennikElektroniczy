@@ -4,6 +4,6 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class SchoolClass(
-    val id_klasa: Int? = null,
+    var id_klasa: String? = null,
     val nazwa: String? = null
 )

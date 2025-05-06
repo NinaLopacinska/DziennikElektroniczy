@@ -20,13 +20,11 @@ import java.util.Date
 class OcenyNauczycielViewModel : ViewModel() {
 
     private var database: FirebaseFirestore = Firebase.firestore
-    private val _subject = MutableLiveData<List<Subject>>()
-    val subject: LiveData<List<Subject>> = _subject
-    private val _user = MutableLiveData<List<User>>()
-    val user: LiveData<List<User>> = _user
-    private val _schooldata = MutableLiveData<List<SchoolClass>>()
-    val schooldata: LiveData<List<SchoolClass>> = _schooldata
-    private val message = MutableLiveData<String>()
+    val subject: MutableLiveData<List<Subject>> by lazy { MutableLiveData() }
+    val user: MutableLiveData<List<User>> by lazy { MutableLiveData() }
+    val schooldata: MutableLiveData<List<SchoolClass>> by lazy { MutableLiveData() }
+    private val erMe = MutableLiveData<String>()
+    private val me = MutableLiveData<String>()
 
     fun getSubject() {
         database.collection("przedmioty").get().addOnCompleteListener { task ->
@@ -35,16 +33,16 @@ class OcenyNauczycielViewModel : ViewModel() {
                 if (!document.isEmpty) {
                     val list = emptyList<Subject>().toMutableList()
                     document?.forEach {
-                        list.add(it.toObject(Subject::class.java))
+                        list.add(it.toObject(Subject::class.java).apply { id = it.id })
                     }
-                    _subject.value = list
+                    subject.value = list
                 } else {
                     Log.d("NO doc", "No such document")
-                    message.value = "No such document"
+                    erMe.value = "No such document"
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.exception)
-                message.value = task.exception.toString()
+                erMe.value = task.exception.toString()
             }
         }
     }
@@ -56,16 +54,16 @@ class OcenyNauczycielViewModel : ViewModel() {
                 if (!document.isEmpty) {
                     val list = emptyList<User>().toMutableList()
                     document?.forEach {
-                        list.add(it.toObject(User::class.java))
+                        list.add(it.toObject(User::class.java).apply { id = it.id })
                     }
-                    _user.value = list
+                    user.value = list
                 } else {
                     Log.d("NO doc", "No such document")
-                    message.value = "No such document"
+                    erMe.value = "No such document"
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.exception)
-                message.value = task.exception.toString()
+                erMe.value = task.exception.toString()
             }
         }
     }
@@ -76,17 +74,19 @@ class OcenyNauczycielViewModel : ViewModel() {
                 val document = task.result
                 if (!document.isEmpty) {
                     val list = emptyList<SchoolClass>().toMutableList()
-                    document?.forEach {
-                        list.add(it.toObject(SchoolClass::class.java))
+                    document?.forEachIndexed { index, it ->
+                        if(index != 0) {
+                            list.add(it.toObject(SchoolClass::class.java).apply { id_klasa = it.id })
+                        }
                     }
-                    _schooldata.value = list
+                    schooldata.value = list
                 } else {
                     Log.d("NO doc", "No such document")
-                    message.value = "No such document"
+                    erMe.value = "No such document"
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.exception)
-                message.value = task.exception.toString()
+                erMe.value = task.exception.toString()
             }
         }
     }
@@ -109,12 +109,13 @@ class OcenyNauczycielViewModel : ViewModel() {
 
         database.collection("oceny")
             .add(docData)
-            .addOnSuccessListener { message.value = "DocumentSnapshot successfully written!" }
-            .addOnFailureListener { message.value =  "Error writing document" }
+            .addOnSuccessListener { me.value = "Ocena została zapisana" }
+            .addOnFailureListener { me.value =  "Ocena nie została zapisana" }
 
 
     }
 
     val userSubjectAndUserAndSchooldataLiveData = TripleMediatorLiveData(subject, user, schooldata)
-    val errorMessage: LiveData<String> = message
+    val errorMessage: LiveData<String> = erMe
+    val message: LiveData<String> = me
 }

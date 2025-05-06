@@ -112,7 +112,7 @@ class WiadomosciListaFragment : Fragment() {
                         ListaKontaktow(
                             name = sclass.nazwa.orEmpty(),
                             viewType = AdapterViewType.VIEW_TYPE_ITEM,
-                            emailList = userData.filter { it.id_klasa == sclass.id_klasa }.map { it.email }
+                            emailList = userData.filter { it.id_klasa.toString() == sclass.id_klasa }.map { it.email }
                         )
                     )
                 }

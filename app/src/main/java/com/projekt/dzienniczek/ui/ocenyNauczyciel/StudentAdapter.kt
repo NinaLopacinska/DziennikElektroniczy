@@ -12,7 +12,7 @@ import com.projekt.dzienniczek.model.User
 
 class StudentAdapter(
     activity: Activity,
-    subjects: Array<User>
+    subjects: MutableList<User>
 ) : ArrayAdapter<User>(activity, R.layout.item_spinner, R.id.text, subjects) {
 
     val flater: LayoutInflater = activity.layoutInflater
@@ -42,5 +42,4 @@ class StudentAdapter(
 
         return view
     }
-
 }

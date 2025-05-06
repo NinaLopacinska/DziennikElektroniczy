@@ -13,7 +13,7 @@ import com.projekt.dzienniczek.model.Subject
 
 class KlasyAdapter(
     activity: Activity,
-    subjects: Array<SchoolClass>
+    subjects: MutableList<SchoolClass>
 ) : ArrayAdapter<SchoolClass>(activity, R.layout.item_spinner, R.id.text, subjects) {
 
     val flater: LayoutInflater = activity.layoutInflater

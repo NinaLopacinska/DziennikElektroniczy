@@ -12,7 +12,7 @@ import com.projekt.dzienniczek.model.Subject
 
 class PrzedmiotyAdapter(
     activity: Activity,
-    subjects: Array<Subject>
+    subjects: MutableList<Subject>
 ) : ArrayAdapter<Subject>(activity, R.layout.item_spinner, R.id.text, subjects) {
 
     val flater: LayoutInflater = activity.layoutInflater

@@ -13,7 +13,7 @@ import com.projekt.dzienniczek.model.Subject
 
 class OcenaAdapter(
     activity: Activity,
-    subjects: Array<String>
+    subjects: MutableList<String>
 ) : ArrayAdapter<String>(activity, R.layout.item_spinner, R.id.text, subjects) {
 
     val flater: LayoutInflater = activity.layoutInflater

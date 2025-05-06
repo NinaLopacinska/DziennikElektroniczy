@@ -2,12 +2,11 @@ package com.projekt.dzienniczek.ui.ocenyNauczyciel
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.Selection
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +17,6 @@ import com.projekt.dzienniczek.databinding.FragmentOcenyNauczycielBinding
 import com.projekt.dzienniczek.model.Role
 import com.projekt.dzienniczek.model.Subject
 import com.projekt.dzienniczek.model.User
-import java.text.DecimalFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.TimeZone
@@ -26,11 +24,7 @@ import java.util.TimeZone
 
 class OcenyNauczycielFragment : Fragment() {
 
-    private var _binding: FragmentOcenyNauczycielBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentOcenyNauczycielBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +36,8 @@ class OcenyNauczycielFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(OcenyNauczycielViewModel::class.java)
 
-        _binding = FragmentOcenyNauczycielBinding.inflate(inflater, container, false)
+        binding = FragmentOcenyNauczycielBinding.inflate(inflater, container, false)
+
         val root: View = binding.root
 
         viewModel.errorMessage.observe(viewLifecycleOwner) {
@@ -55,21 +50,70 @@ class OcenyNauczycielFragment : Fragment() {
             ).show()
         }
 
+        viewModel.message.observe(viewLifecycleOwner) {
+            Toast.makeText(
+                context,
+                it,
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
+
         viewModel.userSubjectAndUserAndSchooldataLiveData.observe(viewLifecycleOwner) { (subject, user, schooldata) ->
-            if(subject != null && user != null && schooldata != null) {
+            if (subject != null && user != null && schooldata != null) {
                 val userSubject = subject.first { it.id_uzyt == currentUser?.uid }
 
-                val adapter = PrzedmiotyAdapter(activity as MainActivity, subject.toTypedArray())
+                val adapter =
+                    PrzedmiotyAdapter(activity as MainActivity, subject.toMutableList())
                 binding.spinnerPrzedmiot.adapter = adapter
                 binding.spinnerPrzedmiot.setSelection(adapter.getPosition(userSubject), false)
 
-                val adapter2 = KlasyAdapter(activity as MainActivity, schooldata.toTypedArray())
-                binding.spinnerClass.adapter = adapter2
-
-                val adapter3 = StudentAdapter(activity as MainActivity, user.filter { it.rola == Role.UCZEN.value }.toTypedArray())
+                val adapter3 = StudentAdapter(
+                    activity as MainActivity,
+                    user.filter { it.rola == Role.UCZEN.value }.toMutableList()
+                )
                 binding.spinnerStudent.adapter = adapter3
 
-                val adapter4 = OcenaAdapter(activity as MainActivity, listOf("6", "5.5", "5","4.5", "4", "3.5", "3", "2.5", "2", "1.5", "1").toTypedArray())
+                val adapter2 =
+                    KlasyAdapter(activity as MainActivity, schooldata.toMutableList())
+                binding.spinnerClass.adapter = adapter2
+                binding.spinnerClass.onItemSelectedListener = object : OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        adapter3.clear()
+                        adapter3.addAll(user.filter { it.rola == Role.UCZEN.value })
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        adapter3.clear()
+                        adapter3.addAll(user.filter {
+                            it.rola == Role.UCZEN.value && it.id_klasa.toString() == adapter2.getItem(
+                                position
+                            )?.id_klasa
+                        })
+                    }
+                }
+
+
+                val adapter4 = OcenaAdapter(
+                    activity as MainActivity,
+                    listOf(
+                        "6",
+                        "5.5",
+                        "5",
+                        "4.5",
+                        "4",
+                        "3.5",
+                        "3",
+                        "2.5",
+                        "2",
+                        "1.5",
+                        "1"
+                    ).toMutableList()
+                )
                 binding.gradeValue.adapter = adapter4
 
                 var selectedDate: Date? = null
@@ -82,7 +126,8 @@ class OcenyNauczycielFragment : Fragment() {
                         val calendar = Calendar.getInstance()
                         calendar.set(date.year, date.month, date.dayOfMonth)
                         selectedDate = calendar.time
-                        binding.selectData.text = d.toString() + "." + m.toString() + "." + y.toString()
+                        binding.selectData.text =
+                            d.toString() + "." + (m + 1).toString() + "." + y.toString()
                     },
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
@@ -90,11 +135,10 @@ class OcenyNauczycielFragment : Fragment() {
                 )
 
                 binding.buttonSend.setOnClickListener {
-                    if(
-                        selectedDate != null
+                    if (selectedDate != null
                         && (binding.spinnerStudent.selectedItem as User).id != null
                         && (binding.spinnerPrzedmiot.selectedItem as Subject).id != null
-                        ) {
+                    ) {
                         viewModel.sentGrade(
                             przedmiot = (binding.spinnerPrzedmiot.selectedItem as Subject).id!!,
                             uczen = (binding.spinnerStudent.selectedItem as User).id!!,
@@ -129,11 +173,6 @@ class OcenyNauczycielFragment : Fragment() {
         binding.progressLoader.visibility = View.VISIBLE
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 }
