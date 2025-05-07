@@ -15,16 +15,14 @@ import com.projekt.dzienniczek.utils.AppPreferences
 
 class UstawieniaFragment : Fragment() {
 
-    private var _binding: FragmentUstawieniaBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentUstawieniaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel = ViewModelProvider(this).get(UstawieniaViewModel::class.java)
-        _binding = FragmentUstawieniaBinding.inflate(inflater, container, false)
+        binding = FragmentUstawieniaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // Stan przełącznika powiadomień
@@ -79,10 +77,5 @@ class UstawieniaFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -10,11 +10,7 @@ import com.projekt.dzienniczek.databinding.FragmentKontaktyBinding
 
 class KontaktyFragment : Fragment() {
 
-    private var _binding: FragmentKontaktyBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentKontaktyBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,14 +20,9 @@ class KontaktyFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(KontaktyViewModel::class.java)
 
-        _binding = FragmentKontaktyBinding.inflate(inflater, container, false)
+        binding = FragmentKontaktyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -10,11 +10,7 @@ import com.projekt.dzienniczek.databinding.FragmentKalendarzUczenBinding
 
 class KalendarzUczenFragment : Fragment() {
 
-    private var _binding: FragmentKalendarzUczenBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentKalendarzUczenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +20,7 @@ class KalendarzUczenFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(KalendarzUczenViewModel::class.java)
 
-        _binding = FragmentKalendarzUczenBinding.inflate(inflater, container, false)
+        binding = FragmentKalendarzUczenBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel.text.observe(viewLifecycleOwner) {
@@ -32,10 +28,5 @@ class KalendarzUczenFragment : Fragment() {
         }
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

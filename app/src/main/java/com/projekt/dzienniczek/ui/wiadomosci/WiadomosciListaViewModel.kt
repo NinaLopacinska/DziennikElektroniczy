@@ -10,7 +10,9 @@ import androidx.lifecycle.asLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.projekt.dzienniczek.model.Grade
 import com.projekt.dzienniczek.model.SchoolClass
+import com.projekt.dzienniczek.model.Subject
 import com.projekt.dzienniczek.model.User
 import com.projekt.dzienniczek.utils.PairMediatorLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,10 +21,8 @@ import kotlinx.coroutines.flow.combine
 class WiadomosciListaViewModel : ViewModel() {
 
     private var database: FirebaseFirestore = Firebase.firestore
-    private val _user = MutableLiveData<List<User>>()
-    val user: LiveData<List<User>> = _user
-    private val _schooldata = MutableLiveData<List<SchoolClass>>()
-    val schooldata: LiveData<List<SchoolClass>> = _schooldata
+    val user: MutableLiveData<List<User>> by lazy { MutableLiveData() }
+    val schooldata: MutableLiveData<List<SchoolClass>> by lazy { MutableLiveData() }
     private val message = MutableLiveData<String>()
 
     fun getUserData() {
@@ -35,7 +35,7 @@ class WiadomosciListaViewModel : ViewModel() {
                         list.add(it.toObject(User::class.java))
                     }
                     Log.d("doc", "getUserData " + list.toString())
-                    _user.value = list
+                    user.value = list
                 } else {
                     Log.d("NO doc", "No such document")
                     message.value = "No such document"
@@ -57,7 +57,7 @@ class WiadomosciListaViewModel : ViewModel() {
                         list.add(it.toObject(SchoolClass::class.java))
                     }
                     Log.d("doc", "getClass "  + list.toString())
-                    _schooldata.value = list
+                    schooldata.value = list
                 } else {
                     Log.d("NO doc", "No such document")
                     message.value = "No such document"

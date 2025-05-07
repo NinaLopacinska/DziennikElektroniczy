@@ -10,11 +10,7 @@ import com.projekt.dzienniczek.databinding.FragmentListaObecnsciBinding
 
 class ListaObecnosciFragment : Fragment() {
 
-    private var _binding: FragmentListaObecnsciBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentListaObecnsciBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +20,7 @@ class ListaObecnosciFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(ListaObecnosciViewModel::class.java)
 
-        _binding = FragmentListaObecnsciBinding.inflate(inflater, container, false)
+        binding = FragmentListaObecnsciBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel.text.observe(viewLifecycleOwner) {
@@ -32,10 +28,5 @@ class ListaObecnosciFragment : Fragment() {
         }
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

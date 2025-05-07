@@ -21,11 +21,7 @@ import com.projekt.dzienniczek.model.User
 
 class WiadomosciListaFragment : Fragment() {
 
-    private var _binding: FragmentWiadomosciListaBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentWiadomosciListaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +33,7 @@ class WiadomosciListaFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(WiadomosciListaViewModel::class.java)
 
-        _binding = FragmentWiadomosciListaBinding.inflate(inflater, container, false)
+        binding = FragmentWiadomosciListaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel.errorMessage.observe(viewLifecycleOwner) {
@@ -141,10 +137,5 @@ class WiadomosciListaFragment : Fragment() {
         binding.progressLoader.visibility = View.VISIBLE
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

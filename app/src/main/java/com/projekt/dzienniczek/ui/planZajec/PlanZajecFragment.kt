@@ -10,11 +10,7 @@ import com.projekt.dzienniczek.databinding.FragmentPlanZajecBinding
 
 class PlanZajecFragment : Fragment() {
 
-    private var _binding: FragmentPlanZajecBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentPlanZajecBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +20,7 @@ class PlanZajecFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(PlanZajecViewModel::class.java)
 
-        _binding = FragmentPlanZajecBinding.inflate(inflater, container, false)
+        binding = FragmentPlanZajecBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel.text.observe(viewLifecycleOwner) {
@@ -34,8 +30,4 @@ class PlanZajecFragment : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

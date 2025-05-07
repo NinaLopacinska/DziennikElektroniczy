@@ -11,24 +11,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
-import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.databinding.FragmentWiadomosciBinding
 import com.projekt.dzienniczek.model.ListaKontaktow
 
 class WiadomosciFragment : Fragment() {
 
-    private var _binding: FragmentWiadomosciBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentWiadomosciBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentWiadomosciBinding.inflate(inflater, container, false)
+        binding = FragmentWiadomosciBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val kontakt: ListaKontaktow = Gson().fromJson(arguments?.getString("kontakt"), ListaKontaktow::class.java)
@@ -66,10 +61,5 @@ class WiadomosciFragment : Fragment() {
         } else {
             Toast.makeText(context, "Brak aplikacji do obsługi e-maila", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

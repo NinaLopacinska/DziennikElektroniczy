@@ -16,11 +16,7 @@ import com.projekt.dzienniczek.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +26,7 @@ class LoginFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel.text.observe(viewLifecycleOwner) {
@@ -79,10 +75,5 @@ class LoginFragment : Fragment() {
         }
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
