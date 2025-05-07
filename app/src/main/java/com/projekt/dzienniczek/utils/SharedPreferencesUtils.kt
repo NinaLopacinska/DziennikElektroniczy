@@ -2,7 +2,6 @@ package com.projekt.dzienniczek.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import java.lang.Boolean.getBoolean
 
 val NOTIFICATION = "NOTIFICATION"
 

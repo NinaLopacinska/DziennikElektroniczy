@@ -23,8 +23,8 @@ class OcenyNauczycielViewModel : ViewModel() {
     val subject: MutableLiveData<List<Subject>> by lazy { MutableLiveData() }
     val user: MutableLiveData<List<User>> by lazy { MutableLiveData() }
     val schooldata: MutableLiveData<List<SchoolClass>> by lazy { MutableLiveData() }
-    private val erMe = MutableLiveData<String>()
-    private val me = MutableLiveData<String>()
+    private val errorMessage = MutableLiveData<String>()
+    private val message = MutableLiveData<String>()
 
     fun getSubject() {
         database.collection("przedmioty").get().addOnCompleteListener { task ->
@@ -38,11 +38,11 @@ class OcenyNauczycielViewModel : ViewModel() {
                     subject.value = list
                 } else {
                     Log.d("NO doc", "No such document")
-                    erMe.value = "No such document"
+                    errorMessage.value = "No such document"
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.exception)
-                erMe.value = task.exception.toString()
+                errorMessage.value = task.exception.toString()
             }
         }
     }
@@ -59,11 +59,11 @@ class OcenyNauczycielViewModel : ViewModel() {
                     user.value = list
                 } else {
                     Log.d("NO doc", "No such document")
-                    erMe.value = "No such document"
+                    errorMessage.value = "No such document"
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.exception)
-                erMe.value = task.exception.toString()
+                errorMessage.value = task.exception.toString()
             }
         }
     }
@@ -82,11 +82,11 @@ class OcenyNauczycielViewModel : ViewModel() {
                     schooldata.value = list
                 } else {
                     Log.d("NO doc", "No such document")
-                    erMe.value = "No such document"
+                    errorMessage.value = "No such document"
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.exception)
-                erMe.value = task.exception.toString()
+                errorMessage.value = task.exception.toString()
             }
         }
     }
@@ -109,13 +109,13 @@ class OcenyNauczycielViewModel : ViewModel() {
 
         database.collection("oceny")
             .add(docData)
-            .addOnSuccessListener { me.value = "Ocena została zapisana" }
-            .addOnFailureListener { me.value =  "Ocena nie została zapisana" }
+            .addOnSuccessListener { message.value = "Ocena została zapisana" }
+            .addOnFailureListener { message.value =  "Ocena nie została zapisana" }
 
 
     }
 
     val userSubjectAndUserAndSchooldataLiveData = TripleMediatorLiveData(subject, user, schooldata)
-    val errorMessage: LiveData<String> = erMe
-    val message: LiveData<String> = me
+    val errorMessageLiveData: LiveData<String> = errorMessage
+    val messageLiveData: LiveData<String> = message
 }

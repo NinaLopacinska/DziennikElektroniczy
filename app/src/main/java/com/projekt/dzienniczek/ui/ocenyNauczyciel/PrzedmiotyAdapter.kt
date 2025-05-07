@@ -24,7 +24,7 @@ class PrzedmiotyAdapter(
             view = flater.inflate(R.layout.item_spinner_dropdown,parent, false);
         }
 
-        val txtTitle = view!!.findViewById(R.id.text) as TextView
+        val txtTitle: TextView = view!!.findViewById(R.id.text)
         txtTitle.text = getItem(position)?.nazwa
 
         return view
@@ -37,7 +37,7 @@ class PrzedmiotyAdapter(
             view = flater.inflate(R.layout.item_spinner,parent, false);
         }
 
-        val txtTitle = view!!.findViewById(R.id.text) as TextView
+        val txtTitle: TextView = view!!.findViewById(R.id.text)
         txtTitle.text = getItem(position)?.nazwa
 
         return view

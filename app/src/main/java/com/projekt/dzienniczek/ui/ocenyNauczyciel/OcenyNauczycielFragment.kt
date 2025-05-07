@@ -2,6 +2,7 @@ package com.projekt.dzienniczek.ui.ocenyNauczyciel
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,81 +41,53 @@ class OcenyNauczycielFragment : Fragment() {
 
         val root: View = binding.root
 
-        viewModel.errorMessage.observe(viewLifecycleOwner) {
+        viewModel.errorMessageLiveData.observe(viewLifecycleOwner) {
             (activity as MainActivity).auth.signOut()
             findNavController().navigate(R.id.action_nav_home_to_nav_login)
-            Toast.makeText(
-                context,
-                it,
-                Toast.LENGTH_SHORT,
-            ).show()
+            Toast.makeText(context, it, Toast.LENGTH_SHORT,).show()
         }
 
-        viewModel.message.observe(viewLifecycleOwner) {
-            Toast.makeText(
-                context,
-                it,
-                Toast.LENGTH_SHORT,
-            ).show()
+        viewModel.messageLiveData.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT,).show()
         }
 
         viewModel.userSubjectAndUserAndSchooldataLiveData.observe(viewLifecycleOwner) { (subject, user, schooldata) ->
             if (subject != null && user != null && schooldata != null) {
                 val userSubject = subject.first { it.id_uzyt == currentUser?.uid }
 
-                val adapter =
+                val adapterSubject =
                     PrzedmiotyAdapter(activity as MainActivity, subject.toMutableList())
-                binding.spinnerPrzedmiot.adapter = adapter
-                binding.spinnerPrzedmiot.setSelection(adapter.getPosition(userSubject), false)
+                binding.spinnerPrzedmiot.adapter = adapterSubject
+                binding.spinnerPrzedmiot.setSelection(adapterSubject.getPosition(userSubject), false)
 
-                val adapter3 = StudentAdapter(
+                val adapterStudent = StudentAdapter(
                     activity as MainActivity,
                     user.filter { it.rola == Role.UCZEN.value }.toMutableList()
                 )
-                binding.spinnerStudent.adapter = adapter3
+                binding.spinnerStudent.adapter = adapterStudent
 
-                val adapter2 =
+                val adapterKlasy =
                     KlasyAdapter(activity as MainActivity, schooldata.toMutableList())
-                binding.spinnerClass.adapter = adapter2
+                binding.spinnerClass.adapter = adapterKlasy
                 binding.spinnerClass.onItemSelectedListener = object : OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
-                        adapter3.clear()
-                        adapter3.addAll(user.filter { it.rola == Role.UCZEN.value })
+                        adapterStudent.clear()
+                        adapterStudent.addAll(user.filter { it.rola == Role.UCZEN.value })
                     }
 
                     override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View?,
-                        position: Int,
-                        id: Long
-                    ) {
-                        adapter3.clear()
-                        adapter3.addAll(user.filter {
-                            it.rola == Role.UCZEN.value && it.id_klasa.toString() == adapter2.getItem(
-                                position
-                            )?.id_klasa
-                        })
+                        parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        adapterStudent.clear()
+                        adapterStudent.addAll(user.filter { it.rola == Role.UCZEN.value && it.id_klasa.toString() == adapterKlasy.getItem(position)?.id_klasa })
                     }
                 }
 
 
-                val adapter4 = OcenaAdapter(
+                val adapterOcena = OcenaAdapter(
                     activity as MainActivity,
-                    listOf(
-                        "6",
-                        "5.5",
-                        "5",
-                        "4.5",
-                        "4",
-                        "3.5",
-                        "3",
-                        "2.5",
-                        "2",
-                        "1.5",
-                        "1"
-                    ).toMutableList()
+                    listOf("6", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5", "1").toMutableList()
                 )
-                binding.gradeValue.adapter = adapter4
+                binding.gradeValue.adapter = adapterOcena
 
                 var selectedDate: Date? = null
 
@@ -122,12 +95,11 @@ class OcenyNauczycielFragment : Fragment() {
 
                 val datePicker = DatePickerDialog(
                     requireContext(),
-                    { date, y, m, d ->
+                    { date, _, _, _ ->
                         val calendar = Calendar.getInstance()
                         calendar.set(date.year, date.month, date.dayOfMonth)
                         selectedDate = calendar.time
-                        binding.selectData.text =
-                            d.toString() + "." + (m + 1).toString() + "." + y.toString()
+                        binding.selectData.text = DateFormat.format("dd/MM/yyy", calendar.time)
                     },
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),

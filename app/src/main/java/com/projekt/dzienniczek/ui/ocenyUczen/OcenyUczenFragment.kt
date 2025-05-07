@@ -1,7 +1,7 @@
 package com.projekt.dzienniczek.ui.ocenyUczen
 
 import android.os.Bundle
-import android.util.Log
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,25 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.databinding.FragmentOcenyUczenBinding
 import com.projekt.dzienniczek.model.AdapterViewType
-import com.projekt.dzienniczek.model.ListaKontaktow
 import com.projekt.dzienniczek.model.ListaOcen
-import com.projekt.dzienniczek.model.Role
-import com.projekt.dzienniczek.model.User
-import com.projekt.dzienniczek.ui.wiadomosci.WiadomosciAdapter
-import java.text.SimpleDateFormat
 
 class OcenyUczenFragment : Fragment() {
 
-    private var _binding: FragmentOcenyUczenBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentOcenyUczenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +30,7 @@ class OcenyUczenFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this).get(OcenyUczenViewModel::class.java)
 
-        _binding = FragmentOcenyUczenBinding.inflate(inflater, container, false)
+        binding = FragmentOcenyUczenBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel.errorMessage.observe(viewLifecycleOwner) {
@@ -53,7 +43,6 @@ class OcenyUczenFragment : Fragment() {
             ).show()
         }
 
-        val format = SimpleDateFormat("dd/MM/yyy")
 
         viewModel.userSubjectAndGradeLiveData.observe(viewLifecycleOwner) { (subject, grade) ->
             if(subject != null && grade != null) {
@@ -64,7 +53,7 @@ class OcenyUczenFragment : Fragment() {
                 subject.forEach { s ->
                     val oceny = userGrade.filter { it.id_przedmiotu.toString() == s.id }.map {
                         ListaOcen(
-                            name = format.format(it.data!!),
+                            name = DateFormat.format("dd/MM/yyy", it.data!!).toString(),
                             viewType = AdapterViewType.VIEW_TYPE_ITEM,
                             grade = it.ocena
                         )
@@ -108,10 +97,5 @@ class OcenyUczenFragment : Fragment() {
         binding.progressLoader.visibility = View.VISIBLE
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

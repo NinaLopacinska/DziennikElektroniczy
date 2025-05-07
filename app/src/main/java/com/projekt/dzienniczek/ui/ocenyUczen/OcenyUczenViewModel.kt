@@ -16,10 +16,8 @@ import com.projekt.dzienniczek.utils.PairMediatorLiveData
 class OcenyUczenViewModel : ViewModel() {
 
     private var database: FirebaseFirestore = Firebase.firestore
-    private val _subject = MutableLiveData<List<Subject>>()
-    val subject: LiveData<List<Subject>> = _subject
-    private val _grade = MutableLiveData<List<Grade>>()
-    val grade: LiveData<List<Grade>> = _grade
+    val subject: MutableLiveData<List<Subject>> by lazy { MutableLiveData() }
+    val grade: MutableLiveData<List<Grade>> by lazy { MutableLiveData() }
     private val message = MutableLiveData<String>()
 
     fun getSubject() {
@@ -31,7 +29,7 @@ class OcenyUczenViewModel : ViewModel() {
                     document?.forEach {
                         list.add(it.toObject(Subject::class.java).apply { id = it.id })
                     }
-                    _subject.value = list
+                    subject.value = list
                 } else {
                     Log.d("NO doc", "No such document")
                     message.value = "No such document"
@@ -53,7 +51,7 @@ class OcenyUczenViewModel : ViewModel() {
                         list.add(it.toObject(Grade::class.java))
                     }
                     Log.d("doc", "getClass "  + list.toString())
-                    _grade.value = list
+                    grade.value = list
                 } else {
                     Log.d("NO doc", "No such document")
                     message.value = "No such document"
