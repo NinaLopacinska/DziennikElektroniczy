@@ -33,7 +33,7 @@ class OcenyNauczycielViewModel : ViewModel() {
                 if (!document.isEmpty) {
                     val list = emptyList<Subject>().toMutableList()
                     document?.forEach {
-                        list.add(it.toObject(Subject::class.java).apply { id = it.id })
+                        list.add(it.toObject(Subject::class.java).apply { id = it.id.toLong() })
                     }
                     subject.value = list
                 } else {
@@ -92,7 +92,7 @@ class OcenyNauczycielViewModel : ViewModel() {
     }
 
     fun sentGrade(
-        przedmiot: String,
+        przedmiot: Long,
         uczen: String,
         date: Date,
         ocena: Double,

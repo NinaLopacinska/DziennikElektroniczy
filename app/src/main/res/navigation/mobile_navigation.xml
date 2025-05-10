@@ -17,23 +17,11 @@
             android:id="@+id/action_nav_home_to_nav_oceny_nauczyciel"
             app:destination="@id/nav_oceny_nauczyciel" />
         <action
-            android:id="@+id/action_nav_home_to_nav_frekwencja"
-            app:destination="@id/nav_frekwencja" />
-        <action
             android:id="@+id/action_nav_home_to_nav_kalendarz_uczen"
             app:destination="@id/nav_kalendarz_uczen" />
         <action
             android:id="@+id/action_nav_home_to_nav_kalendarz_nauczyciel"
             app:destination="@id/nav_kalendarz_nauczyciel" />
-        <action
-            android:id="@+id/action_nav_home_to_nav_kontakty"
-            app:destination="@id/nav_kontakty" />
-        <action
-            android:id="@+id/action_nav_home_to_nav_lista_obecnosci"
-            app:destination="@id/nav_lista_obecnosci" />
-        <action
-            android:id="@+id/action_nav_home_to_nav_plan_zajec"
-            app:destination="@id/nav_plan_zajec" />
         <action
             android:id="@+id/action_nav_home_to_nav_ustawienia"
             app:destination="@id/nav_ustawienia" />
@@ -64,12 +52,6 @@
         tools:layout="@layout/fragment_oceny_nauczyciel" />
 
     <fragment
-        android:id="@+id/nav_frekwencja"
-        android:name="com.projekt.dzienniczek.ui.frekwencja.FrekwencjaFragment"
-        android:label="Frekwencja"
-        tools:layout="@layout/fragment_frekwencja" />
-
-    <fragment
         android:id="@+id/nav_kalendarz_uczen"
         android:name="com.projekt.dzienniczek.ui.kalendarzUczen.KalendarzUczenFragment"
         android:label="Kalendarz Uczeń"
@@ -80,25 +62,6 @@
         android:name="com.projekt.dzienniczek.ui.kalendarzNauczyciel.KalendarzNauczycielFragment"
         android:label="Kalendarz Nauczyciel"
         tools:layout="@layout/fragment_kalendarz_nauczyciel" />
-
-
-    <fragment
-        android:id="@+id/nav_kontakty"
-        android:name="com.projekt.dzienniczek.ui.kontakty.KontaktyFragment"
-        android:label="Kontakty"
-        tools:layout="@layout/fragment_kontakty" />
-
-    <fragment
-        android:id="@+id/nav_lista_obecnosci"
-        android:name="com.projekt.dzienniczek.ui.listaObecnosci.ListaObecnosciFragment"
-        android:label="Lista Obecności"
-        tools:layout="@layout/fragment_lista_obecnsci" />
-
-    <fragment
-        android:id="@+id/nav_plan_zajec"
-        android:name="com.projekt.dzienniczek.ui.planZajec.PlanZajecFragment"
-        android:label="Plan Zajęc"
-        tools:layout="@layout/fragment_plan_zajec" />
 
     <fragment
         android:id="@+id/nav_ustawienia"

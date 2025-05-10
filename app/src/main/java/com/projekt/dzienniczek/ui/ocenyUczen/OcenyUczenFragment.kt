@@ -51,7 +51,7 @@ class OcenyUczenFragment : Fragment() {
                 val contactList = emptyList<ListaOcen>().toMutableList()
 
                 subject.forEach { s ->
-                    val oceny = userGrade.filter { it.id_przedmiotu.toString() == s.id }.map {
+                    val oceny = userGrade.filter { it.id_przedmiotu == s.id }.map {
                         ListaOcen(
                             name = DateFormat.format("dd/MM/yyy", it.data!!).toString(),
                             viewType = AdapterViewType.VIEW_TYPE_ITEM,

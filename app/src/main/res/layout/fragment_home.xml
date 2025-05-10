@@ -80,32 +80,6 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/planZajec"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingEnd="8dp"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:text="Plan Zajęć"
-        android:drawablePadding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border1" />
-
-    <View
-        android:id="@+id/border2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/grey"
-        app:layout_constraintTop_toBottomOf="@id/planZajec"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
         android:id="@+id/kalendarz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -119,10 +93,10 @@
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/calendar_blank_outline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border2" />
+        app:layout_constraintTop_toBottomOf="@+id/border1" />
 
     <View
-        android:id="@+id/border3"
+        android:id="@+id/border2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="10dp"
@@ -146,10 +120,10 @@
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/message_draw"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border3" />
+        app:layout_constraintTop_toBottomOf="@+id/border2" />
 
     <View
-        android:id="@+id/border4"
+        android:id="@+id/border3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="10dp"
@@ -160,68 +134,11 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/frekwencja"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:text="Frekwencja"
-        android:drawablePadding="10dp"
-        android:visibility="gone"
-        android:drawableStart="@drawable/account_check"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border4" />
-
-    <View
-        android:id="@+id/border14"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/grey"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/frekwencja"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/kontakty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingEnd="8dp"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:text="Kontakty"
-        android:drawablePadding="10dp"
-        android:drawableStart="@drawable/card_account_mail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border14" />
-
-    <View
-        android:id="@+id/border5"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/grey"
-        app:layout_constraintTop_toBottomOf="@id/kontakty"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
         android:id="@+id/ustawienia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
         android:paddingTop="15dp"
-        android:paddingBottom="15dp"
         android:paddingEnd="8dp"
         android:textAlignment="textStart"
         android:textSize="18sp"
@@ -229,42 +146,17 @@
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/cog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border5" />
+        app:layout_constraintTop_toBottomOf="@+id/border3" />
 
     <View
-        android:id="@+id/border6"
+        android:id="@+id/border4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
         android:background="@color/grey"
         app:layout_constraintTop_toBottomOf="@id/ustawienia"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/listaObecnosci"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingEnd="8dp"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:text="Lista Obecności"
-        android:drawablePadding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border6" />
-
-    <View
-        android:id="@+id/border7"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/grey"
-        app:layout_constraintTop_toBottomOf="@id/listaObecnosci"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

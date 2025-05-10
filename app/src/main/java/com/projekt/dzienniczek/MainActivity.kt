@@ -8,7 +8,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -35,14 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_login, R.id.nav_oceny_nauczyciel, R.id.nav_oceny_uczen,  R.id.nav_frekwencja, R.id.nav_kalendarz_uczen, R.id.nav_kalendarz_nauczyciel, R.id.nav_kontakty, R.id.nav_lista_obecnosci, R.id.nav_plan_zajec, R.id.nav_ustawienia, R.id.nav_wiadomosci, R.id.nav_wiadomosci_item
-            ), drawerLayout
-        )
 
         askNotificationPermission()
         getToken()

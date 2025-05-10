@@ -55,19 +55,6 @@ class HomeFragment : Fragment() {
 
             binding.userType.text = rola.name
             binding.userEmail.text = it.email
-
-            if(rola == Role.UCZEN) {
-                binding.frekwencja.visibility = View.GONE
-                binding.border14.visibility = View.GONE
-                binding.listaObecnosci.visibility = View.VISIBLE
-                binding.border7.visibility = View.VISIBLE
-            } else {
-                binding.frekwencja.visibility = View.VISIBLE
-                binding.border14.visibility = View.VISIBLE
-                binding.listaObecnosci.visibility = View.GONE
-                binding.border7.visibility = View.GONE
-            }
-
             binding.progressLoader.visibility = View.GONE
         }
 
@@ -77,10 +64,6 @@ class HomeFragment : Fragment() {
             } else {
                 findNavController().navigate(R.id.action_nav_home_to_nav_oceny_nauczyciel)
             }
-        }
-
-        binding.planZajec.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_plan_zajec)
         }
 
         binding.kalendarz.setOnClickListener{
@@ -95,20 +78,8 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_home_to_nav_wiadomosci)
         }
 
-        binding.frekwencja.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_frekwencja)
-        }
-
-        binding.kontakty.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_kontakty)
-        }
-
         binding.ustawienia.setOnClickListener{
             findNavController().navigate(R.id.action_nav_home_to_nav_ustawienia)
-        }
-
-        binding.listaObecnosci.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_home_to_nav_lista_obecnosci)
         }
 
         binding.logout.setOnClickListener{
