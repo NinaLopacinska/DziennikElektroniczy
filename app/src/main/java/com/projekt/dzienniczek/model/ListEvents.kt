@@ -1,7 +1,7 @@
 package com.projekt.dzienniczek.model
 
-class ListaOcen (
+class ListEvents (
     val viewType: AdapterViewType,
     val name: String,
-    val grade: Double
+    val value: String?
 )

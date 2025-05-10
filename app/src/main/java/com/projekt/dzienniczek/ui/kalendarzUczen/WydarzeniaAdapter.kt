@@ -1,4 +1,4 @@
-package com.projekt.dzienniczek.ui.ocenyUczen
+package com.projekt.dzienniczek.ui.kalendarzUczen
 
 
 import android.view.LayoutInflater
@@ -8,11 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.model.AdapterViewType
+import com.projekt.dzienniczek.model.Event
+import com.projekt.dzienniczek.model.ListEvents
 import com.projekt.dzienniczek.model.ListaOcen
 
 
-class OcenyAdapter(
-    var listaOcen: List<ListaOcen>
+class WydarzeniaAdapter(
+    var listaOcen: List<ListEvents>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,7 +24,7 @@ class OcenyAdapter(
             view = inflater.inflate(R.layout.header_przedmiot, parent, false)
             return VHHeader(view)
         } else if (viewType == AdapterViewType.VIEW_TYPE_ITEM.viewType) {
-            view = inflater.inflate(R.layout.item_ocena, parent, false)
+            view = inflater.inflate(R.layout.item_wydarzenie, parent, false)
             return VHItem(view)
         }
         throw java.lang.RuntimeException(("There is no type that matches the type $viewType").toString() + ". Make sure you are using view types correctly!")
@@ -35,14 +37,13 @@ class OcenyAdapter(
             AdapterViewType.VIEW_TYPE_HEADER.viewType -> {
                 (holder as VHHeader).apply {
                     przedmiot.text = item.name
-                    ocena.text = "Średnia: " + item.grade
                 }
             }
 
             AdapterViewType.VIEW_TYPE_ITEM.viewType -> {
                 (holder as VHItem).apply {
                     data.text = item.name
-                    ocena.text = item.grade.toString()
+                    opis.text = item.value
                 }
             }
         }
@@ -58,11 +59,10 @@ class OcenyAdapter(
 
     internal inner class VHItem(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val data: TextView = itemView.findViewById(R.id.data)
-        val ocena: TextView = itemView.findViewById(R.id.ocena)
+        val opis: TextView = itemView.findViewById(R.id.opis)
     }
 
     internal inner class VHHeader(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val przedmiot: TextView = itemView.findViewById(R.id.przedmiot)
-        val ocena: TextView = itemView.findViewById(R.id.ocena)
     }
 }
