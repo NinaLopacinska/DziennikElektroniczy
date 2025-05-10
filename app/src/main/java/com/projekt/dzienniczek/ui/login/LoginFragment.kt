@@ -5,13 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.projekt.dzienniczek.MainActivity
-import com.projekt.dzienniczek.R
 import com.projekt.dzienniczek.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -23,15 +20,11 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
-            ViewModelProvider(this).get(LoginViewModel::class.java)
+        val debugMode = false
 
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        viewModel.text.observe(viewLifecycleOwner) {
-            binding.textLogin.text = it
-        }
 
         binding.buttonLogin.setOnClickListener{
             val login = binding.editTextLogin.text.toString()
@@ -64,14 +57,18 @@ class LoginFragment : Fragment() {
             }
         }
 
-        binding.buttonLoginStudent.setOnClickListener{
-            binding.editTextLogin.setText("marysiama2003@gmail.com")
-            binding.editTextPassword.setText("Haslo123")
-        }
+        if(debugMode) {
+            binding.buttonLoginStudent.visibility = View.VISIBLE
+            binding.buttonLoginStudent.setOnClickListener {
+                binding.editTextLogin.setText("marysiama2003@gmail.com")
+                binding.editTextPassword.setText("Haslo123")
+            }
 
-        binding.buttonLoginTeacher.setOnClickListener{
-            binding.editTextLogin.setText("anowak@wp.pl")
-            binding.editTextPassword.setText("Haslo123")
+            binding.buttonLoginTeacher.visibility = View.VISIBLE
+            binding.buttonLoginTeacher.setOnClickListener {
+                binding.editTextLogin.setText("anowak@wp.pl")
+                binding.editTextPassword.setText("Haslo123")
+            }
         }
 
         return root
