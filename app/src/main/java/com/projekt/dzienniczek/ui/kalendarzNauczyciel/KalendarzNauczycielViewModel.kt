@@ -11,8 +11,8 @@ import com.google.firebase.ktx.Firebase
 import com.projekt.dzienniczek.model.SchoolClass
 import com.projekt.dzienniczek.model.Subject
 import com.projekt.dzienniczek.model.User
-import com.projekt.dzienniczek.utils.PairMediatorLiveData
 import com.projekt.dzienniczek.utils.TripleMediatorLiveData
+import com.projekt.dzienniczek.utils.sendNotificationToUser
 import java.util.Date
 
 class KalendarzNauczycielViewModel : ViewModel() {
@@ -20,6 +20,7 @@ class KalendarzNauczycielViewModel : ViewModel() {
     private var database: FirebaseFirestore = Firebase.firestore
     val subject: MutableLiveData<List<Subject>> by lazy { MutableLiveData() }
     val schooldata: MutableLiveData<List<SchoolClass>> by lazy { MutableLiveData() }
+    val user: MutableLiveData<List<User>> by lazy { MutableLiveData() }
     private val errorMessage = MutableLiveData<String>()
     private val message = MutableLiveData<String>()
 
@@ -67,12 +68,34 @@ class KalendarzNauczycielViewModel : ViewModel() {
         }
     }
 
+    fun getUserData() {
+        database.collection("uzytkownicy").get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val document = task.result
+                if (!document.isEmpty) {
+                    val list = emptyList<User>().toMutableList()
+                    document?.forEach {
+                        list.add(it.toObject(User::class.java).apply { id = it.id })
+                    }
+                    user.value = list
+                } else {
+                    Log.d("NO doc", "No such document")
+                    errorMessage.value = "No such document"
+                }
+            } else {
+                Log.d("ERROR", "get failed with ", task.exception)
+                errorMessage.value = task.exception.toString()
+            }
+        }
+    }
+
     fun sentEvent(
         przedmiot: Long,
         klasa: Long,
         date: Date,
         opis: String,
-        nauczyciel: String
+        nauczyciel: String,
+        userIdList: List<User>
     ) {
 
         val docData = hashMapOf(
@@ -85,13 +108,16 @@ class KalendarzNauczycielViewModel : ViewModel() {
 
         database.collection("wydarzenia")
             .add(docData)
-            .addOnSuccessListener { message.value = "Wydarzenie została zapisana" }
+            .addOnSuccessListener {
+                message.value = "Wydarzenie została zapisana"
+                userIdList.forEach { sendNotificationToUser(it.id, "Pojawiło się nowe wydarzenie") }
+            }
             .addOnFailureListener { message.value =  "Wydarzenie nie została zapisana" }
 
 
     }
 
-    val userSubjectAndSchooldataLiveData = PairMediatorLiveData(subject, schooldata)
+    val userSubjectAndSchooldataAndUserLiveData = TripleMediatorLiveData(subject, schooldata, user)
     val errorMessageLiveData: LiveData<String> = errorMessage
     val messageLiveData: LiveData<String> = message
 }

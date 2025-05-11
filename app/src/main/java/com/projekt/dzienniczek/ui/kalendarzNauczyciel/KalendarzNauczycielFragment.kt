@@ -48,8 +48,8 @@ class KalendarzNauczycielFragment : Fragment() {
             Toast.makeText(context, it, Toast.LENGTH_SHORT,).show()
         }
 
-        viewModel.userSubjectAndSchooldataLiveData.observe(viewLifecycleOwner) { (subject, schooldata) ->
-            if (subject != null && schooldata != null) {
+        viewModel.userSubjectAndSchooldataAndUserLiveData.observe(viewLifecycleOwner) { (subject, schooldata, user) ->
+            if (subject != null && schooldata != null && user != null) {
                 val userSubject = subject.first { it.id_uzyt == currentUser?.uid }
 
                 val adapterSubject = PrzedmiotyAdapter(activity as MainActivity, subject.toMutableList())
@@ -91,7 +91,8 @@ class KalendarzNauczycielFragment : Fragment() {
                             klasa = (binding.spinnerClass.selectedItem as SchoolClass).id_klasa!!.toLong(),
                             date = selectedDate!!,
                             opis = binding.inputOpis.text.toString(),
-                            nauczyciel = currentUser!!.uid
+                            nauczyciel = currentUser!!.uid,
+                            userIdList = user.filter { it.id_klasa == (binding.spinnerClass.selectedItem as SchoolClass).id_klasa!!.toInt() }
                         )
                     } else {
                         Toast.makeText(
@@ -116,6 +117,7 @@ class KalendarzNauczycielFragment : Fragment() {
 
         viewModel.getSubject()
         viewModel.getClass()
+        viewModel.getUserData()
         binding.progressLoader.visibility = View.VISIBLE
 
         return root

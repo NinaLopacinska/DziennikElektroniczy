@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.messaging.FirebaseMessaging
 import com.projekt.dzienniczek.MainActivity
 import com.projekt.dzienniczek.databinding.FragmentLoginBinding
 
@@ -36,6 +37,7 @@ class LoginFragment : Fragment() {
                         .addOnCompleteListener(act) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
+                                FirebaseMessaging.getInstance().subscribeToTopic("user_"+ act.auth.currentUser?.uid);
                                 findNavController().popBackStack()
                             } else {
                                 // If sign in fails, display a message to the user.

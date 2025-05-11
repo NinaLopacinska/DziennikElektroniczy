@@ -8,13 +8,11 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.projekt.dzienniczek.model.Grade
 import com.projekt.dzienniczek.model.SchoolClass
 import com.projekt.dzienniczek.model.Subject
 import com.projekt.dzienniczek.model.User
-import com.projekt.dzienniczek.utils.PairMediatorLiveData
 import com.projekt.dzienniczek.utils.TripleMediatorLiveData
-import org.w3c.dom.Text
+import com.projekt.dzienniczek.utils.sendNotificationToUser
 import java.util.Date
 
 class OcenyNauczycielViewModel : ViewModel() {
@@ -109,7 +107,10 @@ class OcenyNauczycielViewModel : ViewModel() {
 
         database.collection("oceny")
             .add(docData)
-            .addOnSuccessListener { message.value = "Ocena została zapisana" }
+            .addOnSuccessListener {
+                message.value = "Ocena została zapisana"
+                sendNotificationToUser(uczen, "Pojawiła się nowa ocena")
+            }
             .addOnFailureListener { message.value =  "Ocena nie została zapisana" }
 
 
