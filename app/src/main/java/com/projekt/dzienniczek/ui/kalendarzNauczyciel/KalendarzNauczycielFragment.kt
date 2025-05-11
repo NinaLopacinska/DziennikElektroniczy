@@ -63,6 +63,8 @@ class KalendarzNauczycielFragment : Fragment() {
 
                 val cal: Calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"))
 
+                cal.add(Calendar.DATE, 1)
+
                 val datePicker = DatePickerDialog(
                     requireContext(),
                     { date, _, _, _ ->
@@ -75,6 +77,8 @@ class KalendarzNauczycielFragment : Fragment() {
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)
                 )
+
+                datePicker.datePicker.minDate = cal.timeInMillis
 
                 binding.buttonSend.setOnClickListener {
                     if (selectedDate != null
